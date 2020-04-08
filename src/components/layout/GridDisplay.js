@@ -4,6 +4,8 @@ import _ from "lodash";
 
 import Toolbox from "./Toolbox";
 
+// import widgets
+import SimpleLineChart from "../widgets/SimpleLineChart";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 class GridDisplay extends React.PureComponent {
@@ -38,15 +40,20 @@ class GridDisplay extends React.PureComponent {
     };
     const i = el.i;
     return (
-      <div className="react-grid-item" key={i} data-grid={el}>
-        <span className="text">{i}</span>
-        <span
+      <div
+        className="react-grid-item"
+        key={i}
+        data-grid={el}
+        style={{ padding: "1rem" }}
+      >
+        <SimpleLineChart />
+        <div
           className="remove"
           style={removeStyle}
           onClick={() => this.onRemoveItem(i)}
         >
           x
-        </span>
+        </div>
       </div>
     );
   };
