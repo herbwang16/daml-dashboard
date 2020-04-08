@@ -6,6 +6,7 @@ import Toolbox from "./Toolbox";
 
 // import widgets
 import SimpleLineChart from "../widgets/SimpleLineChart";
+import SimpleBarChart from "../widgets/SimpleBarChart";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 class GridDisplay extends React.PureComponent {
@@ -32,6 +33,7 @@ class GridDisplay extends React.PureComponent {
   };
 
   createElement = el => {
+    console.log(el);
     const removeStyle = {
       position: "absolute",
       right: "2px",
@@ -46,7 +48,7 @@ class GridDisplay extends React.PureComponent {
         data-grid={el}
         style={{ padding: "1rem" }}
       >
-        <SimpleLineChart />
+        {el.content ? el.content : <SimpleLineChart />}
         <div
           className="remove"
           style={removeStyle}
@@ -90,7 +92,8 @@ class GridDisplay extends React.PureComponent {
         x: (this.state.items.length * 2) % (this.state.cols || 12),
         y: Infinity, // puts it at the bottom
         w: 2,
-        h: 2
+        h: 2,
+        content: <SimpleBarChart />
       }),
       // Increment the counter to ensure key is always unique.
       newCounter: this.state.newCounter + 1,
