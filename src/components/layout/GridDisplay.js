@@ -5,11 +5,16 @@ import _ from "lodash";
 import { Dropdown, Button } from "semantic-ui-react";
 
 import Toolbox from "./Toolbox";
-import Widget from "./Widget";
 
 // import widgets
 import SimpleLineChart from "../widgets/SimpleLineChart";
 import SimpleBarChart from "../widgets/SimpleBarChart";
+import BubbleChart from "../widgets/BubbleChart";
+import SimpleAreaChart from "../widgets/SimpleAreaChart";
+import SimplePieChart from "../widgets/SimplePieChart";
+import SimpleRadarChart from "../widgets/SimpleRadarChart";
+import SimpleScatterChart from "../widgets/SimpleScatterChart";
+
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 const widgetOptions = [
@@ -24,6 +29,36 @@ const widgetOptions = [
     value: "Simple bar chart",
     text: "Simple bar chart",
     widget: <SimpleBarChart />
+  },
+  {
+    key: "BubbleChart",
+    text: "Bubble chart",
+    value: "Bubble chart",
+    widget: <BubbleChart />
+  },
+  {
+    key: "SimpleAreaChart",
+    text: "Simple area chart",
+    value: "Simple area chart",
+    widget: <SimpleAreaChart />
+  },
+  {
+    key: "SimplePieChart",
+    text: "Simple pie chart",
+    value: "Simple pie chart",
+    widget: <SimplePieChart />
+  },
+  {
+    key: "SimpleRadarChart",
+    text: "Simple radar chart",
+    value: "Simple radar chart",
+    widget: <SimpleRadarChart />
+  },
+  {
+    key: "SimpleScatterChart",
+    text: "Simple scatter chart",
+    value: "Simple scatter chart",
+    widget: <SimpleScatterChart />
   }
 ];
 
@@ -113,7 +148,7 @@ class GridDisplay extends React.PureComponent {
 
   handleAddWidget = () => {
     this.setState({
-      // Add a new item. It must have a unique key!
+      // Add a new item - must have a unique key!
       items: this.state.items.concat({
         i: "n" + this.state.newCounter,
         x: (this.state.items.length * 2) % (this.state.cols || 12),
