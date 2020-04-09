@@ -2,12 +2,37 @@ import React from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
 
+import { Dropdown, Button } from "semantic-ui-react";
+
 import Toolbox from "./Toolbox";
+import Widget from "./Widget";
 
 // import widgets
 import SimpleLineChart from "../widgets/SimpleLineChart";
 import SimpleBarChart from "../widgets/SimpleBarChart";
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
+
+const widgetOptions = [
+  {
+    key: "SimpleLineChart",
+    text: "Simple line chart",
+    value: "Simple line chart",
+    widget: <SimpleLineChart />
+  },
+  {
+    key: "SimpleBarChart",
+    value: "Simple bar chart",
+    text: "Simple bar chart",
+    widget: <SimpleBarChart />
+  }
+];
+
+const widgetDict = {};
+widgetOptions.forEach(widget => {
+  widgetDict[widget.value] = widget.widget;
+});
+
+console.log("widget dict:", widgetDict);
 
 class GridDisplay extends React.PureComponent {
   static defaultProps = {
@@ -29,7 +54,8 @@ class GridDisplay extends React.PureComponent {
         add: i === list.length - 1
       };
     }),
-    newCounter: 0
+    newCounter: 0,
+    widgetDropdown: ""
   };
 
   createElement = el => {
@@ -48,7 +74,7 @@ class GridDisplay extends React.PureComponent {
         data-grid={el}
         style={{ padding: "1rem" }}
       >
-        {el.content ? el.content : <SimpleLineChart />}
+        {el.widgetType ? widgetDict[el.widgetType] : <SimpleLineChart />}
         <div
           className="remove"
           style={removeStyle}
@@ -81,10 +107,11 @@ class GridDisplay extends React.PureComponent {
       );
     });
   };
+  handleWidgetDropdownChange = (e, { value }) => {
+    this.setState({ widgetDropdown: value });
+  };
 
-  onAddItem = () => {
-    /*eslint no-console: 0*/
-    console.log("adding", "n" + this.state.newCounter);
+  handleAddWidget = () => {
     this.setState({
       // Add a new item. It must have a unique key!
       items: this.state.items.concat({
@@ -93,7 +120,7 @@ class GridDisplay extends React.PureComponent {
         y: Infinity, // puts it at the bottom
         w: 2,
         h: 2,
-        content: <SimpleBarChart />
+        widgetType: this.state.widgetDropdown
       }),
       // Increment the counter to ensure key is always unique.
       newCounter: this.state.newCounter + 1,
@@ -118,48 +145,21 @@ class GridDisplay extends React.PureComponent {
     this.setState({ items: _.reject(this.state.items, { i: i }) });
   };
 
-  onTakeItem = item => {
-    this.setState(prevState => ({
-      toolbox: {
-        ...prevState.toolbox,
-        [prevState.currentBreakpoint]: prevState.toolbox[
-          prevState.currentBreakpoint
-        ].filter(({ i }) => i !== item.i)
-      },
-      layouts: {
-        ...prevState.layouts,
-        [prevState.currentBreakpoint]: [
-          ...prevState.layouts[prevState.currentBreakpoint],
-          item
-        ]
-      }
-    }));
-  };
-
-  onPutItem = item => {
-    this.setState(prevState => {
-      return {
-        toolbox: {
-          ...prevState.toolbox,
-          [prevState.currentBreakpoint]: [
-            ...(prevState.toolbox[prevState.currentBreakpoint] || []),
-            item
-          ]
-        },
-        layouts: {
-          ...prevState.layouts,
-          [prevState.currentBreakpoint]: prevState.layouts[
-            prevState.currentBreakpoint
-          ].filter(({ i }) => i !== item.i)
-        }
-      };
-    });
-  };
-
   render() {
     return (
       <div>
-        <button onClick={this.onAddItem}>Add Item</button>
+        <center>
+          <div style={{ padding: "1rem" }}>
+            <Dropdown
+              button
+              options={widgetOptions}
+              text={this.state.widgetDropdown || "Select widget to add"}
+              value={this.state.widgetDropdown}
+              onChange={this.handleWidgetDropdownChange}
+            />
+            <Button onClick={this.handleAddWidget}> Add Widget</Button>
+          </div>
+        </center>
         <ResponsiveReactGridLayout
           onLayoutChange={this.onLayoutChange}
           onBreakpointChange={this.onBreakpointChange}
