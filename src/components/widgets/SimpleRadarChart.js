@@ -51,14 +51,7 @@ class SimpleRadarChart extends React.Component {
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart
-          cx={300}
-          cy={250}
-          outerRadius={150}
-          width={500}
-          height={500}
-          data={data}
-        >
+        <RadarChart width={500} height={500} data={data}>
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
           <PolarRadiusAxis />
