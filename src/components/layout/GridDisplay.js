@@ -2,11 +2,13 @@ import React from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
 
-import { Dropdown, Button } from "semantic-ui-react";
+import { Dropdown, Button } from "antd";
 
 import Toolbox from "./Toolbox";
+import { ThemeContext } from "../context/ThemeContext";
 
 // import widgets
+import WidgetModal from "../widgetSelection/WidgetModal";
 import SimpleLineChart from "../widgets/SimpleLineChart";
 import SimpleBarChart from "../widgets/SimpleBarChart";
 import BubbleChart from "../widgets/BubbleChart";
@@ -78,6 +80,8 @@ class GridDisplay extends React.PureComponent {
     rowHeight: 100
   };
 
+  static contextType = ThemeContext;
+
   state = {
     items: [0, 1, 2, 3, 4].map(function(i, key, list) {
       return {
@@ -94,6 +98,7 @@ class GridDisplay extends React.PureComponent {
   };
 
   createElement = el => {
+    const { theme, dispatch } = this.context;
     console.log(el);
     const removeStyle = {
       position: "absolute",
@@ -107,7 +112,10 @@ class GridDisplay extends React.PureComponent {
         className="react-grid-item"
         key={i}
         data-grid={el}
-        style={{ padding: "1rem" }}
+        style={{
+          padding: "1rem",
+          backgroundColor: theme.widgetBackgroundColor
+        }}
       >
         {el.widgetType ? widgetDict[el.widgetType] : <SimpleLineChart />}
         <div
@@ -146,7 +154,7 @@ class GridDisplay extends React.PureComponent {
     this.setState({ widgetDropdown: value });
   };
 
-  handleAddWidget = () => {
+  handleAddWidget = type => {
     this.setState({
       // Add a new item - must have a unique key!
       items: this.state.items.concat({
@@ -155,7 +163,7 @@ class GridDisplay extends React.PureComponent {
         y: Infinity, // puts it at the bottom
         w: 2,
         h: 2,
-        widgetType: this.state.widgetDropdown
+        widgetType: type
       }),
       // Increment the counter to ensure key is always unique.
       newCounter: this.state.newCounter + 1,
@@ -181,23 +189,26 @@ class GridDisplay extends React.PureComponent {
   };
 
   render() {
+    const { theme, dispatch } = this.context;
+
     return (
       <div>
         <center>
           <div style={{ padding: "1rem" }}>
-            <Dropdown
-              button
-              options={widgetOptions}
-              text={this.state.widgetDropdown || "Select widget to add"}
-              value={this.state.widgetDropdown}
-              onChange={this.handleWidgetDropdownChange}
+            <WidgetModal
+              onSelectWidget={type => {
+                this.handleAddWidget(type);
+              }}
             />
-            <Button onClick={this.handleAddWidget}> Add Widget</Button>
           </div>
         </center>
         <ResponsiveReactGridLayout
           onLayoutChange={this.onLayoutChange}
           onBreakpointChange={this.onBreakpointChange}
+          style={{
+            backgroundColor: theme.gridBackGroundColor,
+            margin: "1rem"
+          }}
           {...this.props}
         >
           {_.map(this.state.items, el => this.createElement(el))}
