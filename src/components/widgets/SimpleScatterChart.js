@@ -9,6 +9,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
+import { ThemeContext } from "../context/ThemeContext";
 
 const data = [
   { x: 100, y: 200, z: 200 },
@@ -20,18 +21,18 @@ const data = [
 ];
 
 class SimpleScatterChart extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
+    const { theme, dispatch } = this.context;
+    const { primary, secondary } = theme;
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <ScatterChart
-          width={400}
-          height={400}
-          margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-        >
+        <ScatterChart>
           <CartesianGrid />
           <XAxis dataKey={"x"} type="number" name="stature" unit="cm" />
           <YAxis dataKey={"y"} type="number" name="weight" unit="kg" />
-          <Scatter name="A school" data={data} fill="#8884d8" />
+          <Scatter name="A school" data={data} fill={primary} />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
         </ScatterChart>
       </ResponsiveContainer>

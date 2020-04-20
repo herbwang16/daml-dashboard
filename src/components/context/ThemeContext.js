@@ -4,7 +4,10 @@ import React, { createContext, useContext, useReducer, useState } from "react";
 const initialState = {
   widgetBackgroundColor: "#ffffff",
   gridBackGroundColor: "#D9E0EC",
-  selectedWidgetBackgroundColor: "#D9E0EC"
+  selectedWidgetBackgroundColor: "#D9E0EC",
+  primary: "#2ce0d0",
+  secondary: "#903dc9",
+  extendedColors: ["#33b3be", "#8763d2", "#136d7d", "#b981d5"]
 };
 
 const ThemeContext = createContext(initialState);

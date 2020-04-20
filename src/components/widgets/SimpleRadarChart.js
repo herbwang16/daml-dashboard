@@ -7,6 +7,7 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer
 } from "recharts";
+import { ThemeContext } from "../context/ThemeContext";
 
 const data = [
   {
@@ -48,18 +49,22 @@ const data = [
 ];
 
 class SimpleRadarChart extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
+    const { theme, dispatch } = this.context;
+    const { primary, secondary } = theme;
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart width={500} height={500} data={data}>
+        <RadarChart data={data}>
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
           <PolarRadiusAxis />
           <Radar
             name="Mike"
             dataKey="A"
-            stroke="#8884d8"
-            fill="#8884d8"
+            stroke={primary}
+            fill={secondary}
             fillOpacity={0.6}
           />
         </RadarChart>

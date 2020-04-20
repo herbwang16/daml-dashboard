@@ -9,6 +9,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
+import { ThemeContext } from "../context/ThemeContext";
 
 const data = [
   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -21,15 +22,14 @@ const data = [
 ];
 
 class SimpleLineChart extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
+    const { theme, dispatch } = this.context;
+    const { primary, secondary } = theme;
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={600}
-          height={300}
-          data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
+        <LineChart data={data}>
           <XAxis dataKey="name" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
@@ -38,10 +38,10 @@ class SimpleLineChart extends React.Component {
           <Line
             type="monotone"
             dataKey="pv"
-            stroke="#8884d8"
+            stroke={primary}
             activeDot={{ r: 8 }}
           />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="uv" stroke={secondary} />
         </LineChart>
       </ResponsiveContainer>
     );

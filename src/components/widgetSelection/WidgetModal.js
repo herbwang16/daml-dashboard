@@ -50,9 +50,11 @@ class WidgetModal extends React.Component {
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
-          height="40rem"
-          width="50rem"
-          bodyStyle={{ overflowY: "scroll" }}
+          bodyStyle={{
+            overflowY: "scroll",
+            height: "40rem",
+            padding: "2rem 3rem"
+          }}
         >
           <WidgetModalGrid
             onSelectWidget={type => this.handleSelectWidget(type)}

@@ -8,6 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
+import { ThemeContext } from "../context/ThemeContext";
 
 const data = [
   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -20,20 +21,25 @@ const data = [
 ];
 
 class SimpleAreaChart extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
+    const { theme, dispatch } = this.context;
+    const { primary, secondary } = theme;
+
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart
-          width={600}
-          height={400}
-          data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
-        >
+        <AreaChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+          <Area
+            type="monotone"
+            dataKey="uv"
+            stroke={primary}
+            fill={secondary}
+          />
         </AreaChart>
       </ResponsiveContainer>
     );

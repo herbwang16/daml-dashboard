@@ -78,8 +78,9 @@ class WidgetModalGrid extends React.PureComponent {
 
     return (
       <Row gutter={[32, 32]}>
-        {widgets.map(w => (
+        {widgets.map((w, index) => (
           <Col
+            key={index}
             span={12}
             style={{
               backgroundColor:
@@ -87,18 +88,16 @@ class WidgetModalGrid extends React.PureComponent {
                   ? selectedWidgetBackgroundColor
                   : widgetBackgroundColor,
               cursor: "pointer",
-              borderRadius: "1rem",
-              margin: "1rem 0"
+              borderRadius: "1rem"
             }}
           >
             <div
-              className="grid-item"
+              className="widget-grid-item"
               onClick={() => this.handleSelectWidget(w.value)}
-              style={{
-                height: "12rem"
-              }}
             >
-              <center>{w.value}</center>
+              <div className="widget-header">
+                <center>{w.value}</center>
+              </div>
               <br />
               {w.widget}
             </div>

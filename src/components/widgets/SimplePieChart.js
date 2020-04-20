@@ -1,5 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import { ThemeContext } from "../context/ThemeContext";
 
 const data = [
   { name: "Group A", value: 400 },
@@ -7,8 +8,6 @@ const data = [
   { name: "Group C", value: 300 },
   { name: "Group D", value: 200 }
 ];
-
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
@@ -38,7 +37,12 @@ const renderCustomizedLabel = ({
 };
 
 class SimplePieChart extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
+    const { theme, dispatch } = this.context;
+    const { primary, secondary, extendedColors } = theme;
+
     return (
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
@@ -46,13 +50,13 @@ class SimplePieChart extends React.Component {
             data={data}
             labelLine={false}
             label={renderCustomizedLabel}
-            fill="#8884d8"
+            fill={primary}
             dataKey="value"
           >
             {data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
+                fill={extendedColors[index % extendedColors.length]}
               />
             ))}
           </Pie>

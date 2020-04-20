@@ -49,6 +49,18 @@ body {
   width: 100%;
 }
 
+/* WIDGET STYLES */
+
+.widget-header {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.widget-grid-item {
+  padding-bottom: 2rem;
+  height: 15rem;
+}
+
 /* GRID LAYOUT STYLES */
 .react-grid-layout {
   background: #eee;
