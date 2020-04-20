@@ -78,7 +78,7 @@ class BubbleChart extends React.Component {
     const { primary, secondary } = theme;
 
     return (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="50%" justify="center">
         <ScatterChart>
           <XAxis
             type="category"

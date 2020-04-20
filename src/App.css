@@ -62,6 +62,12 @@ body {
   height: 15rem;
 }
 
+/* MODAL STYLES */
+
+.modal-button {
+  margin: 0.5rem;
+}
+
 /* GRID LAYOUT STYLES */
 .react-grid-layout {
   background: #eee;

@@ -69,8 +69,12 @@ class WidgetModal extends React.Component {
     const CurrentView = widgetSteps[this.state.step];
     const okText = this.state.step === 1 ? "Add Widget" : "Next";
     return (
-      <div>
-        <Button type="primary" onClick={this.showModal}>
+      <span>
+        <Button
+          className="modal-button"
+          type="primary"
+          onClick={this.showModal}
+        >
           Add Widget
         </Button>
         <Modal
@@ -97,7 +101,7 @@ class WidgetModal extends React.Component {
             onSelectWidget={type => this.handleSelectWidget(type)}
           />
         </Modal>
-      </div>
+      </span>
     );
   }
 }

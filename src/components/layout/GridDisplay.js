@@ -6,7 +6,7 @@ import { Dropdown, Button } from "antd";
 
 import Toolbox from "./Toolbox";
 import { ThemeContext } from "../context/ThemeContext";
-
+import ThemingModal from "./ThemingModal";
 // import widgets
 import WidgetModal from "../widgetSelection/WidgetModal";
 import SimpleLineChart from "../widgets/SimpleLineChart";
@@ -200,6 +200,8 @@ class GridDisplay extends React.PureComponent {
                 this.handleAddWidget(type);
               }}
             />
+
+            <ThemingModal />
           </div>
         </center>
         <ResponsiveReactGridLayout
