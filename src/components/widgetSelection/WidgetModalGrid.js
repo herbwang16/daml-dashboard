@@ -64,20 +64,42 @@ const widgets = [
 ];
 
 class WidgetModalGrid extends React.PureComponent {
+  state = { selected: "" };
+
+  static contextType = ThemeContext;
+
+  handleSelectWidget = type => {
+    this.setState({ selected: type }, () => this.props.onSelectWidget(type));
+  };
+
   render() {
     const { theme, dispatch } = this.context;
-
-    console.log(this.state);
+    const { selectedWidgetBackgroundColor, widgetBackgroundColor } = theme;
 
     return (
-      <Row>
+      <Row gutter={[32, 32]}>
         {widgets.map(w => (
-          <Col span={12}>
+          <Col
+            span={12}
+            style={{
+              backgroundColor:
+                this.state.selected === w.value
+                  ? selectedWidgetBackgroundColor
+                  : widgetBackgroundColor,
+              cursor: "pointer",
+              borderRadius: "1rem",
+              margin: "1rem 0"
+            }}
+          >
             <div
               className="grid-item"
-              style={{ height: "10rem", margin: "1rem" }}
-              onClick={() => this.props.onSelectWidget(w.value)}
+              onClick={() => this.handleSelectWidget(w.value)}
+              style={{
+                height: "12rem"
+              }}
             >
+              <center>{w.value}</center>
+              <br />
               {w.widget}
             </div>
           </Col>

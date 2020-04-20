@@ -196,7 +196,7 @@ class GridDisplay extends React.PureComponent {
         <center>
           <div style={{ padding: "1rem" }}>
             <WidgetModal
-              onSelectWidget={type => {
+              onAddWidget={type => {
                 this.handleAddWidget(type);
               }}
             />

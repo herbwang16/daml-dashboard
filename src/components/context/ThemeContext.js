@@ -3,7 +3,8 @@ import React, { createContext, useContext, useReducer, useState } from "react";
 // Initialize context with the default theme
 const initialState = {
   widgetBackgroundColor: "#ffffff",
-  gridBackGroundColor: "#D9E0EC"
+  gridBackGroundColor: "#D9E0EC",
+  selectedWidgetBackgroundColor: "#D9E0EC"
 };
 
 const ThemeContext = createContext(initialState);
