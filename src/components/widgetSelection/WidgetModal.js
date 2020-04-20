@@ -16,8 +16,9 @@ import SimpleScatterChart from "../widgets/SimpleScatterChart";
 // Array of modal content views indexed by step number in the widget selection process
 const widgetSteps = [WidgetModalGrid, WidgetDataEntry];
 const stepTitles = ["Select Widget", "Enter Data"];
+
 class WidgetModal extends React.Component {
-  state = { visible: false, widget: "", step: 0 };
+  state = { visible: false, widget: "", step: 0, errorMessage: "" };
 
   showModal = () => {
     this.setState({
@@ -31,18 +32,32 @@ class WidgetModal extends React.Component {
       // last step, ready to add the widget
       this.props.onAddWidget(this.state.widget);
       this.setState({
-        visible: false
+        widget: "",
+        step: 0,
+        visible: false,
+        errorMessage: ""
       });
     } else {
       // continue to next step
-      this.setState({ step: this.state.step + 1 });
+      if (this.state.step === 0 && !this.state.widget) {
+        this.setState({
+          errorMessage: "You must select a widget type before continuing."
+        });
+      } else {
+        this.setState({ step: this.state.step + 1, errorMessage: "" });
+      }
     }
   };
 
   handleCancel = e => {
-    this.setState({
-      visible: false
-    });
+    this.setState(
+      {
+        visible: false
+      },
+      () => {
+        this.setState({ widget: "", errorMessage: "", step: 0 });
+      }
+    );
   };
 
   handleSelectWidget = type => {
@@ -72,6 +87,11 @@ class WidgetModal extends React.Component {
             padding: "2rem 3rem"
           }}
         >
+          {this.state.errorMessage ? (
+            <div style={{ height: "4rem" }}>{this.state.errorMessage}</div>
+          ) : (
+            ""
+          )}
           <CurrentView
             widget={this.state.widget}
             onSelectWidget={type => this.handleSelectWidget(type)}
