@@ -33,6 +33,7 @@ class ThemingModal extends React.Component {
 
   handleColorChange = color => {
     this.setState({
+      color: color,
       theme: { ...this.state.theme, [this.state.activeSetting]: color.hex }
     });
   };
@@ -40,7 +41,8 @@ class ThemingModal extends React.Component {
   handleOk = e => {
     const { theme, dispatch } = this.context;
     dispatch({ type: "CHANGE THEME", payload: this.state.theme });
-    this.setState({ visible: false });
+
+    this.setState({ visible: false, activeSetting: "" });
   };
 
   handleCancel = e => {

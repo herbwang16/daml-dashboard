@@ -56,7 +56,7 @@ class SimpleRadarChart extends React.Component {
     const { primary, secondary } = theme;
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart data={data}>
+        <RadarChart data={this.props.data || data}>
           <PolarGrid />
           <PolarAngleAxis dataKey="subject" />
           <PolarRadiusAxis />

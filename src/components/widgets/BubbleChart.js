@@ -104,7 +104,7 @@ class BubbleChart extends React.Component {
             wrapperStyle={{ zIndex: 100 }}
             content={this.renderTooltip}
           />
-          <Scatter data={data01} fill={primary} />
+          <Scatter data={this.props.data || data01} fill={primary} />
         </ScatterChart>
       </ResponsiveContainer>
     );

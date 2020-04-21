@@ -29,7 +29,7 @@ class SimpleBarChart extends React.Component {
     const { primary, secondary } = theme;
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data}>
+        <BarChart data={this.props.data || data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />

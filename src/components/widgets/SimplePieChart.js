@@ -47,7 +47,7 @@ class SimplePieChart extends React.Component {
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
-            data={data}
+            data={this.props.data || data}
             labelLine={false}
             label={renderCustomizedLabel}
             fill={primary}

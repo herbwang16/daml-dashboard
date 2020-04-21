@@ -29,7 +29,7 @@ class SimpleLineChart extends React.Component {
     const { primary, secondary } = theme;
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
+        <LineChart data={this.props.data || data}>
           <XAxis dataKey="name" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />

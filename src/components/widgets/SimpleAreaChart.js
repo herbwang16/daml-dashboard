@@ -29,7 +29,7 @@ class SimpleAreaChart extends React.Component {
 
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data}>
+        <AreaChart data={this.props.data || data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />

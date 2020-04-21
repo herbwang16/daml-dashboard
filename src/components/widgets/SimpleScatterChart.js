@@ -32,7 +32,11 @@ class SimpleScatterChart extends React.Component {
           <CartesianGrid />
           <XAxis dataKey={"x"} type="number" name="stature" unit="cm" />
           <YAxis dataKey={"y"} type="number" name="weight" unit="kg" />
-          <Scatter name="A school" data={data} fill={primary} />
+          <Scatter
+            name="A school"
+            data={this.props.data || data}
+            fill={primary}
+          />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
         </ScatterChart>
       </ResponsiveContainer>
