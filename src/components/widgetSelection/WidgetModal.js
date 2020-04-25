@@ -30,7 +30,7 @@ class WidgetModal extends React.Component {
     console.log(this.state);
     if (this.state.step === 1) {
       // last step, ready to add the widget
-      this.props.onAddWidget(this.state.widget);
+      this.props.onAddWidget(this.state.widget, this.state.dataProps);
       this.setState({
         widget: "",
         step: 0,
@@ -63,6 +63,10 @@ class WidgetModal extends React.Component {
   handleSelectWidget = type => {
     this.setState({ widget: type });
     console.log(type);
+  };
+
+  handleReceiveDataProps = props => {
+    this.setState({ dataProps: props });
   };
 
   render() {
@@ -99,6 +103,7 @@ class WidgetModal extends React.Component {
           <CurrentView
             widget={this.state.widget}
             onSelectWidget={type => this.handleSelectWidget(type)}
+            onReceiveDataProps={this.handleReceiveDataProps}
           />
         </Modal>
       </span>

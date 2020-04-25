@@ -24,43 +24,43 @@ const widgetOptions = [
     key: "SimpleLineChart",
     text: "Simple line chart",
     value: "Simple line chart",
-    widget: <SimpleLineChart />
+    widget: SimpleLineChart
   },
   {
     key: "SimpleBarChart",
     value: "Simple bar chart",
     text: "Simple bar chart",
-    widget: <SimpleBarChart />
+    widget: SimpleBarChart
   },
   {
     key: "BubbleChart",
     text: "Bubble chart",
     value: "Bubble chart",
-    widget: <BubbleChart />
+    widget: BubbleChart
   },
   {
     key: "SimpleAreaChart",
     text: "Simple area chart",
     value: "Simple area chart",
-    widget: <SimpleAreaChart />
+    widget: SimpleAreaChart
   },
   {
     key: "SimplePieChart",
     text: "Simple pie chart",
     value: "Simple pie chart",
-    widget: <SimplePieChart />
+    widget: SimplePieChart
   },
   {
     key: "SimpleRadarChart",
     text: "Simple radar chart",
     value: "Simple radar chart",
-    widget: <SimpleRadarChart />
+    widget: SimpleRadarChart
   },
   {
     key: "SimpleScatterChart",
     text: "Simple scatter chart",
     value: "Simple scatter chart",
-    widget: <SimpleScatterChart />
+    widget: SimpleScatterChart
   }
 ];
 
@@ -99,6 +99,7 @@ class GridDisplay extends React.PureComponent {
 
   createElement = el => {
     const { theme, dispatch } = this.context;
+
     console.log(el);
     const removeStyle = {
       position: "absolute",
@@ -107,6 +108,10 @@ class GridDisplay extends React.PureComponent {
       cursor: "pointer"
     };
     const i = el.i;
+
+    let WidgetRender = el.widgetType
+      ? widgetDict[el.widgetType]
+      : SimpleLineChart;
     return (
       <div
         className="react-grid-item"
@@ -117,7 +122,7 @@ class GridDisplay extends React.PureComponent {
           backgroundColor: theme.widgetBackgroundColor
         }}
       >
-        {el.widgetType ? widgetDict[el.widgetType] : <SimpleLineChart />}
+        <WidgetRender {...el.dataProps} />
         <div
           className="remove"
           style={removeStyle}
@@ -154,7 +159,7 @@ class GridDisplay extends React.PureComponent {
     this.setState({ widgetDropdown: value });
   };
 
-  handleAddWidget = type => {
+  handleAddWidget = (type, dataProps) => {
     this.setState({
       // Add a new item - must have a unique key!
       items: this.state.items.concat({
@@ -163,7 +168,8 @@ class GridDisplay extends React.PureComponent {
         y: Infinity, // puts it at the bottom
         w: 2,
         h: 2,
-        widgetType: type
+        widgetType: type,
+        dataProps: dataProps
       }),
       // Increment the counter to ensure key is always unique.
       newCounter: this.state.newCounter + 1,
@@ -196,8 +202,8 @@ class GridDisplay extends React.PureComponent {
         <center>
           <div style={{ padding: "1rem" }}>
             <WidgetModal
-              onAddWidget={type => {
-                this.handleAddWidget(type);
+              onAddWidget={(type, dataProps) => {
+                this.handleAddWidget(type, dataProps);
               }}
             />
 

@@ -27,21 +27,20 @@ class SimpleLineChart extends React.Component {
   render() {
     const { theme, dispatch } = this.context;
     const { primary, secondary } = theme;
+
     return (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <LineChart data={this.props.data || data}>
-          <XAxis dataKey="name" />
+          <XAxis dataKey={this.props.x || "name"} />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
           <Line
             type="monotone"
-            dataKey="pv"
-            stroke={primary}
-            activeDot={{ r: 8 }}
+            dataKey={this.props.y || "uv"}
+            stroke={secondary}
           />
-          <Line type="monotone" dataKey="uv" stroke={secondary} />
         </LineChart>
       </ResponsiveContainer>
     );
