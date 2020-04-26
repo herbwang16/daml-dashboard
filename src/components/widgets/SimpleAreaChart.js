@@ -31,12 +31,12 @@ class SimpleAreaChart extends React.Component {
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={this.props.data || data}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey={this.props.x || "name"} />
           <YAxis />
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="uv"
+            dataKey={this.props.y || "uv"}
             stroke={primary}
             fill={secondary}
           />

@@ -24,6 +24,7 @@ const data = [
 class SimpleBarChart extends React.Component {
   static contextType = ThemeContext;
 
+  // TODO: map y to output bars
   render() {
     const { theme, dispatch } = this.context;
     const { primary, secondary } = theme;
@@ -31,12 +32,12 @@ class SimpleBarChart extends React.Component {
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={this.props.data || data}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey={this.props.x || "name"} />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="pv" fill={primary} />
-          <Bar dataKey="uv" fill={secondary} />
+          <Bar dataKey={this.props.y || "pv"} fill={primary} />
+          <Bar dataKey={this.props.z || "uv"} fill={secondary} />
         </BarChart>
       </ResponsiveContainer>
     );

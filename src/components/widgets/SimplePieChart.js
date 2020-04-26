@@ -51,7 +51,7 @@ class SimplePieChart extends React.Component {
             labelLine={false}
             label={renderCustomizedLabel}
             fill={primary}
-            dataKey="value"
+            dataKey={this.props.y || "value"}
           >
             {data.map((entry, index) => (
               <Cell

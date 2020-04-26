@@ -82,15 +82,15 @@ class BubbleChart extends React.Component {
         <ScatterChart>
           <XAxis
             type="category"
-            dataKey="hour"
+            dataKey={this.props.x || "hour"}
             interval={0}
             tick={{ fontSize: 0 }}
             tickLine={{ transform: "translate(0, -6)" }}
           />
           <YAxis
             type="number"
-            dataKey="index"
-            name="sunday"
+            dataKey={this.props.y || "index"}
+            name={this.props.name || "sunday"}
             height={10}
             width={80}
             tick={false}
@@ -98,7 +98,12 @@ class BubbleChart extends React.Component {
             axisLine={false}
             label={{ value: "Sunday", position: "insideRight" }}
           />
-          <ZAxis type="number" dataKey="value" domain={domain} range={range} />
+          <ZAxis
+            type="number"
+            dataKey={this.props.z || "value"}
+            domain={domain}
+            range={range}
+          />
           <Tooltip
             cursor={{ strokeDasharray: "3 3" }}
             wrapperStyle={{ zIndex: 100 }}

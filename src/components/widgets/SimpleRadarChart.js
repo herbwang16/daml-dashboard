@@ -58,11 +58,11 @@ class SimpleRadarChart extends React.Component {
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart data={this.props.data || data}>
           <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
+          <PolarAngleAxis dataKey={this.props.x || "subject"} />
           <PolarRadiusAxis />
           <Radar
             name="Mike"
-            dataKey="A"
+            dataKey={this.props.y || "A"}
             stroke={primary}
             fill={secondary}
             fillOpacity={0.6}

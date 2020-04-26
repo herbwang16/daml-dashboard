@@ -30,10 +30,20 @@ class SimpleScatterChart extends React.Component {
       <ResponsiveContainer width="100%" height="100%">
         <ScatterChart>
           <CartesianGrid />
-          <XAxis dataKey={"x"} type="number" name="stature" unit="cm" />
-          <YAxis dataKey={"y"} type="number" name="weight" unit="kg" />
+          <XAxis
+            dataKey={this.props.x || "x"}
+            type="number"
+            name={this.props.xName || "stature"}
+            unit={this.props.xUnit || "cm"}
+          />
+          <YAxis
+            dataKey={this.props.y || "y"}
+            type="number"
+            name={this.props.yName || "weight"}
+            unit={this.props.yUnit || "kg"}
+          />
           <Scatter
-            name="A school"
+            name={this.props.name || "A school"}
             data={this.props.data || data}
             fill={primary}
           />
