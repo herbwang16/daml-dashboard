@@ -77,11 +77,12 @@ class WidgetModalGrid extends React.PureComponent {
     const { selectedWidgetBackgroundColor, widgetBackgroundColor } = theme;
 
     return (
-      <Row gutter={[32, 32]}>
+      <Row gutter={[16, 16]}>
         {widgets.map((w, index) => (
           <Col
             key={index}
-            span={12}
+            xs={24}
+            sm={12}
             style={{
               backgroundColor:
                 this.state.selected === w.value

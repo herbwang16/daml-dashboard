@@ -91,7 +91,8 @@ class WidgetModal extends React.Component {
           bodyStyle={{
             overflowY: "scroll",
             height: "50rem",
-            width: "50rem",
+            maxWidth: "90vw",
+            maxHeight: "70vh",
             padding: "2rem 3rem"
           }}
         >
