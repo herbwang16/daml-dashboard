@@ -57,6 +57,8 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
 }
 
 .widget-grid-item {
@@ -64,15 +66,118 @@ body {
   height: 15rem;
 }
 
+
+
 /* MODAL STYLES */
 
-.modal-button {
+.modal-button-add {
+  position: absolute;
+  top:170px;
+  left: 737px;
   margin: 0.5rem;
+  background: #91cfbf;
+  border-color: #91cfbf;
+
+  font-family:"Roboto", sans-serif;
 }
+
+.modal-button-theme{
+  position: absolute;
+  top:170px;
+  left: 887px;
+  margin: 0.5rem;
+  background: #91cfbf;
+  border-color: #91cfbf;
+
+  font-family:"Roboto", sans-serif;
+}
+
+.ant-modal-header {
+  background-color: #ECBA91;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+
+
+.ant-modal-title {
+  color: white;
+  font-size: 24px;
+  font-weight: 450;
+}
+
+.ant-btn:hover{
+  color:black;
+  border-color: black;
+}
+
+.ant-btn:focus{
+  border-color: rgb(217, 217, 217);;
+  color: rgb(0,0,0,0.65);
+}
+
+.modal-button-add:hover, .modal-button-theme:hover{
+  background: #ECBA91;
+  border-color: #ffa39e;
+}
+
+.modal-button-add:focus, .modal-button-theme:focus{
+  background: #ECBA91;
+  border-color: #91cfbf;
+}
+
+.ant-btn-primary{
+  background: #ECBA91;
+  border-color: #ECBA91;
+}
+
+.ant-btn-primary:hover {
+  border-color: #ffa39e;
+  color: white;
+  background: #ECBA91;
+}
+
+.ant-btn-primary:focus{
+  background: #ECBA91;
+  border-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.ant-input:hover{
+  border-color: black;
+}
+
+.ant-upload:focus{
+  border-color: black;
+}
+
+.ant-upload .ant-upload-select:focus {
+  border-color:black;
+}
+
+
+
+.modal-style{
+  font-family:"Roboto", sans-serif;
+  
+}
+
+
+
 
 /* GRID LAYOUT STYLES */
 .react-grid-layout {
   background: #eee;
+}
+
+.react-grid-layout.layout{
+  position: relative;
+  height: 430px; 
+  background-color: rgb(217, 224, 236); 
+  margin: 1rem; 
+  width: 900px;
+  top: 175px; 
+  left: 425px;
 }
 .layoutJSON {
   background: #ddd;
@@ -108,6 +213,7 @@ body {
   right: 0;
   margin: auto;
   height: 24px;
+  font-family: "Roboto", sans-serif;
 }
 .react-grid-item .minMax {
   font-size: 12px;
@@ -247,9 +353,9 @@ body {
 .page-title{
   position: absolute;
   width: 300px;
-  height: 35px;
-  left: 755px;
-  top: 139px;
+  height: 55px;
+  left: 745px;
+  top: 110px;
 
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -283,9 +389,6 @@ body {
   vertical-align: 0.5px;
 }
 
-.ant-layout{
-  background: rgba(255, 255, 255, 0);
-}
 
 .ant-layout-sider {
   position: absolute;
@@ -297,8 +400,8 @@ body {
   left: 0px;
   top: 87px;
   padding: 0px;
-  
   background: #4C5B69;
+  
 }
 
 .ant-menu-submenu-title:hover {
@@ -399,16 +502,11 @@ body {
   align-items: center;
   
 }
+
+.ant-menu-submenu ant-menu-submenu-inline main-menu ant-menu-submenu-open
+
 .ant-menu-submenu-title .ant-menu-submenu-arrow{
     background: white;
-}
-
-.ant-menu.ant-menu-light .ant-menu-submenu-open.main-menu{
-  background:#566878;
-}
-
-.ant-menu.ant-menu-light .ant-menu-submenu:hover {
-  color: white;
 }
 
 
@@ -419,9 +517,7 @@ body {
 
 
 
-.ant-menu.ant-menu.ant-menu-light .ant-menu-submenu.main-menu:hover{
-  color: white!important;
-}
+
 
 .header {
     position: absolute;
@@ -514,4 +610,3 @@ color: #FFFFFF;
   line-height: 28px;
   align-items: center;
 }
-
