@@ -13,13 +13,17 @@ import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 function App() {
   return (
+    <ThemeProvider>
+              <Homepage />
+            </ThemeProvider>
     <Router>
       <div>
         <nav>
           <ul>
-            <ThemeProvider>
-              <Homepage />
-            </ThemeProvider>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            
             <li>
               <Link to="/table">Table</Link>
             </li>
