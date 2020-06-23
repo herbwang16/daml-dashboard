@@ -11,11 +11,8 @@ import { ThemeProvider } from "./components/context/ThemeContext";
 import "semantic-ui-css/semantic.min.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
-function App() {
+export default function App() {
   return (
-    <ThemeProvider>
-              <Homepage />
-            </ThemeProvider>
     <Router>
       <div>
         <nav>
@@ -23,7 +20,7 @@ function App() {
             <li>
               <Link to="/">Home</Link>
             </li>
-            
+
             <li>
               <Link to="/table">Table</Link>
             </li>
@@ -45,4 +42,10 @@ function App() {
   );
 }
 
-export default App;
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function Table() {
+  return <h2>Table</h2>;
+}
