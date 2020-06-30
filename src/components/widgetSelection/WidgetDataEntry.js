@@ -17,6 +17,7 @@ import SimpleScatterChart from "../widgets/SimpleScatterChart";
 
 // Import data processing tools
 import { processFile } from "../../tools/dataHandling/csvHandling";
+import * as XLSX from "xlsx";
 
 const widgets = [
   {
@@ -64,6 +65,8 @@ const widgets = [
 ];
 
 class WidgetDataEntry extends React.PureComponent {
+  
+  
   state = {
     selected: "",
     fileList: [],
@@ -80,6 +83,7 @@ class WidgetDataEntry extends React.PureComponent {
     });
   };
 
+//og csv handling but onFileChange works for csv too
   handleUpload = ({ file, onSuccess }) => {
     console.log(file);
     let reader = new window.FileReader();
@@ -102,6 +106,49 @@ class WidgetDataEntry extends React.PureComponent {
       onSuccess("done", file);
     };
   };
+
+
+//what the customrequest calls, works for both xlsx and csv
+   onFileChange({ file, onSuccess }) {
+    console.log(file);
+    let workBook = null;
+    let jsonHeaderData = null;
+    let jsonContentData = null;
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const data = reader.result;
+      workBook = XLSX.read(data, { type: 'binary' });
+      console.log(workBook.SheetNames[0]);
+      jsonHeaderData = workBook.SheetNames.reduce((initial, name) => {
+        const sheet = workBook.Sheets[name];
+        initial[name] = XLSX.utils.sheet_to_json(sheet, {header: 1});
+        var headers = initial[name];
+        console.log(headers[0]);
+        return initial;
+      }, {});
+      jsonContentData = workBook.SheetNames.reduce((initial, name) => {
+        const sheet = workBook.Sheets[name];
+        initial[name] = XLSX.utils.sheet_to_json(sheet);
+        return initial;
+      }, {});
+      var headerData = Object.values(jsonHeaderData)[0];
+      var contentData = Object.values(jsonContentData)[0];
+      var headers = headerData[0];
+      console.log(headers);
+      let content = contentData;
+      console.log(content);
+      this.setState({
+        processedFile: {content, headers},
+        axes: { x: headers[0], y: headers[1] }
+      });
+      const dataProps = { data: content, ...this.state.axes };
+      this.props.onReceiveDataProps(dataProps);
+      onSuccess("done", file);
+    }
+    
+    reader.readAsBinaryString(file);
+    
+  }
 
   handleAxesConfigChange = (axis, { key }) => {
     console.log(axis, key);
@@ -181,12 +228,13 @@ class WidgetDataEntry extends React.PureComponent {
             <div className="widget-header"> Upload your .CSV file here.</div>
             <div style={{ margin: "1rem" }}>
               <Upload
-                accept=".csv"
+                accept=".csv, .xlsx"
                 multiple={false}
                 name="file"
                 fileList={this.state.fileList}
                 action="memory"
-                customRequest={this.handleUpload}
+                //customRequest={this.handleUpload}
+                customRequest={this.onFileChange.bind(this)}
                 onChange={this.handleFileChange}
               >
                 <Button>
