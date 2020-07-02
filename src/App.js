@@ -10,16 +10,22 @@ import { ThemeProvider } from "./components/context/ThemeContext";
 
 import "semantic-ui-css/semantic.min.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 
 function App() {
   return (
-    
-      <ThemeProvider>
-      <Homepage/>
-      <SideBar />
-      <NavBar 
-      title="Peagle"
-      user="DAML"/>
+    <ThemeProvider>
+      <Router>
+        <Route path = '/(|home|)' exact component = {() => <NavBar title = 'Peagle' user = 'DAML'/>}/>
+        <Route path = '/(|home|)' exact component = {SideBar}/>
+        <Route path = '/'>
+          <Redirect to = '/home'></Redirect>
+        </Route>
+        <Switch>
+          {/* <Route path = '/login' exact component = {Login}/> */}
+          <Route path = '/home' exact component = {Homepage}/>
+        </Switch>
+      </Router>
   </ThemeProvider>
   );
 }
