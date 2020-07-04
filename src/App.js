@@ -11,6 +11,7 @@ import { ThemeProvider } from "./components/context/ThemeContext";
 import "semantic-ui-css/semantic.min.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import Login from './components/auth/Login';
 
 function App() {
   return (
@@ -18,11 +19,8 @@ function App() {
       <Router>
         <Route path = '/(|home|)' exact component = {() => <NavBar title = 'Peagle' user = 'DAML'/>}/>
         <Route path = '/(|home|)' exact component = {SideBar}/>
-        <Route path = '/'>
-          <Redirect to = '/home'></Redirect>
-        </Route>
         <Switch>
-          {/* <Route path = '/login' exact component = {Login}/> */}
+          <Route path = '/login' exact component = {Login}/>
           <Route path = '/home' exact component = {Homepage}/>
         </Switch>
       </Router>

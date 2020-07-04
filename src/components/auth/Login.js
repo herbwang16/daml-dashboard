@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Row, Col, Divider, Space } from 'antd';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
-import "../css/Landing.css";
 import "antd/dist/antd.css";
 
 
