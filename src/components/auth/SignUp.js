@@ -2,7 +2,8 @@ import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Row, Col, Divider, Space } from 'antd';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
-import "../css/Landing.css";
+import { Register as register} from '../../api/api';
+import "../../css/Landing.css";
 import "antd/dist/antd.css";
 
 
@@ -33,43 +34,39 @@ class SignUp extends React.Component {
     }
 
 
-    onFinish = values => {
-      this.setState({
-          username: values.username,
-          email: values.email,
-          password: values.password,
-          passwordV: values.passwordV
-      });
-      if (this.state.password !== this.state.passwordV){
-          alert("Passwords must match!");
-      }
+    onFinish = ()  => {
+        if (this.state.password !== this.state.passwordV) {
+            alert("Passwords must match!");
+        }
+        else {
+            // register(this.state.username, this.state.password)
+            // .then(data => console.log(data))
+            // .catch(err => console.log(err));
+            alert('Code commented out to prevent overflowing db')
+        }
     };
 
     onChangeUsername = e => {
         this.setState({
             username: e.target.value
         });
-        console.log(this.state.username);
     }
 
     onChangeEmail = e => {
         this.setState({
             username: e.target.value
         });
-        console.log(this.state.email);
     }
 
     onChangePassword = e => {
         this.setState({
             password: e.target.value
         });
-        console.log(this.state.password);
     }
     onChangePasswordV = e => {
         this.setState({
             passwordV: e.target.value
         });
-        console.log(this.state.passwordV);
     }
 
     onFinishFailed = errorInfo => {

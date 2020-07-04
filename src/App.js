@@ -11,17 +11,22 @@ import { ThemeProvider } from "./components/context/ThemeContext";
 import "semantic-ui-css/semantic.min.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
-import Login from './components/auth/Login';
+import LoginPage from './components/auth/LoginPage';
+import FPPage from './components/auth/FPPage';
+import SignUpPage from './components/auth/SignUpPage';
+import ProtectedRoute from './components/auth/ProtectedRoute';
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
-        <Route path = '/(|home|)' exact component = {() => <NavBar title = 'Peagle' user = 'DAML'/>}/>
-        <Route path = '/(|home|)' exact component = {SideBar}/>
+        <Route path = '/(|home|)' component = {() => <NavBar title = 'Peagle' user = 'DAML'/>}/>
+        <Route path = '/(|home|)' component = {SideBar}/>
         <Switch>
-          <Route path = '/login' exact component = {Login}/>
-          <Route path = '/home' exact component = {Homepage}/>
+          <Route path = '/login' component = {LoginPage}/>
+          <Route path = '/signup' component = {SignUpPage}/>
+          <Route path = '/reset-password' component = {FPPage}/>
+          <ProtectedRoute path = '/home' component = {Homepage}/>
         </Switch>
       </Router>
   </ThemeProvider>

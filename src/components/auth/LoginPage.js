@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './Login';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import { Row, Col, Divider } from 'antd';
-import '../css/Landing.css';
+import '../../css/Landing.css';
 import "antd/dist/antd.css";
 
 

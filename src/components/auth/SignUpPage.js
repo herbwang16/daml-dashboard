@@ -1,7 +1,7 @@
 import React from 'react';
 import SignUp from './SignUp';
 import { Row, Col, Divider } from 'antd';
-import '../css/Landing.css';
+import '../../css/Landing.css';
 import "antd/dist/antd.css";
 
 

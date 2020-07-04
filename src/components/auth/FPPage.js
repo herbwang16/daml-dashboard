@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import ForgotPassword from './FP';
 import { Row, Col, Divider } from 'antd';
-import '../css/Landing.css';
+import '../../css/Landing.css';
 import "antd/dist/antd.css";
 
 

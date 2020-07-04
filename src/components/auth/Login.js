@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Row, Col, Divider, Space } from 'antd';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
+import { Login as login } from '../../api/api';
 import "antd/dist/antd.css";
 
 
@@ -29,28 +30,22 @@ class Login extends React.Component {
         password: "pass",
     }
 
-
-    onFinish = values => {
-      this.setState({
-          username: values.username,
-          password: values.password
-      });
-      console.log(this.state.username);
-      console.log(this.state.password);
+    onFinish = () => {
+        login(this.state.username, this.state.password)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
     };
 
     onChangeUsername = e => {
         this.setState({
             username: e.target.value
         });
-        console.log(this.state.username);
     }
 
     onChangePassword = e => {
         this.setState({
             password: e.target.value
         });
-        console.log(this.state.password);
     }
 
     onFinishFailed = errorInfo => {
