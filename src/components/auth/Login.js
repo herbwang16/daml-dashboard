@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Row, Col, Divider, Space } from 'antd';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import {BrowserRouter, Route, Link, withRouter } from 'react-router-dom';
+
 import { Login as login } from '../../api/api';
 import "antd/dist/antd.css";
 
@@ -24,7 +25,6 @@ const tailLayout = {
 
 
 class Login extends React.Component {
-
     state = {
         username: "root",
         password: "pass",
@@ -32,8 +32,13 @@ class Login extends React.Component {
 
     onFinish = () => {
         login(this.state.username, this.state.password)
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+        .then(data => {
+            localStorage.setItem('token', data.token);
+            this.props.history.push('/home');
+        })
+        .catch(err => {
+            alert('Incorrect username or password, please try again.')
+        });
     };
 
     onChangeUsername = e => {
@@ -118,4 +123,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

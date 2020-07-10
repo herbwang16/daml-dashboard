@@ -20,8 +20,8 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <Route path = '/(|home|)' component = {() => <NavBar title = 'Peagle' user = 'DAML'/>}/>
-        <Route path = '/(|home|)' component = {SideBar}/>
+        <ProtectedRoute path = '/(|home|)' component = {() => <NavBar title = 'Peagle' user = 'DAML'/>}/>
+        <ProtectedRoute path = '/(|home|)' component = {SideBar}/>
         <Switch>
           <Route path = '/login' component = {LoginPage}/>
           <Route path = '/signup' component = {SignUpPage}/>

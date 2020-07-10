@@ -18,6 +18,7 @@ export const Login = async (email, password) => {
 		email: email,
 		password: password
 	});
+	console.log(data);
 	return data;
 };
 
