@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
 }
@@ -55,6 +57,8 @@ body {
   font-weight: 600;
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
 }
 
 .widget-grid-item {
@@ -62,15 +66,118 @@ body {
   height: 15rem;
 }
 
+
+
 /* MODAL STYLES */
 
-.modal-button {
+.modal-button-add {
+  position: absolute;
+  top:170px;
+  left: 737px;
   margin: 0.5rem;
+  background: #91cfbf;
+  border-color: #91cfbf;
+
+  font-family:"Roboto", sans-serif;
 }
+
+.modal-button-theme{
+  position: absolute;
+  top:170px;
+  left: 887px;
+  margin: 0.5rem;
+  background: #91cfbf;
+  border-color: #91cfbf;
+
+  font-family:"Roboto", sans-serif;
+}
+
+.ant-modal-header {
+  background-color: #ECBA91;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+
+
+.ant-modal-title {
+  color: white;
+  font-size: 24px;
+  font-weight: 450;
+}
+
+.ant-btn:hover{
+  color:black;
+  border-color: black;
+}
+
+.ant-btn:focus{
+  border-color: rgb(217, 217, 217);;
+  color: rgb(0,0,0,0.65);
+}
+
+.modal-button-add:hover, .modal-button-theme:hover{
+  background: #ECBA91;
+  border-color: #ffa39e;
+}
+
+.modal-button-add:focus, .modal-button-theme:focus{
+  background: #ECBA91;
+  border-color: #91cfbf;
+}
+
+.ant-btn-primary{
+  background: #ECBA91;
+  border-color: #ECBA91;
+}
+
+.ant-btn-primary:hover {
+  border-color: #ffa39e;
+  color: white;
+  background: #ECBA91;
+}
+
+.ant-btn-primary:focus{
+  background: #ECBA91;
+  border-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.ant-input:hover{
+  border-color: black;
+}
+
+.ant-upload:focus{
+  border-color: black;
+}
+
+.ant-upload .ant-upload-select:focus {
+  border-color:black;
+}
+
+
+
+.modal-style{
+  font-family:"Roboto", sans-serif;
+  
+}
+
+
+
 
 /* GRID LAYOUT STYLES */
 .react-grid-layout {
   background: #eee;
+}
+
+.react-grid-layout.layout{
+  position: relative;
+  height: 430px; 
+  background-color: rgb(217, 224, 236); 
+  margin: 1rem; 
+  width: 900px;
+  top: 175px; 
+  left: 425px;
 }
 .layoutJSON {
   background: #ddd;
@@ -106,6 +213,7 @@ body {
   right: 0;
   margin: auto;
   height: 24px;
+  font-family: "Roboto", sans-serif;
 }
 .react-grid-item .minMax {
   font-size: 12px;
@@ -223,4 +331,259 @@ body {
 
 .react-resizable-hide > .react-resizable-handle {
   display: none;
+}
+
+
+
+
+
+.logo{
+  height: 114px;
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  
+
+  color: #ffffff;
+}
+
+.page-title{
+  position: absolute;
+  width: 300px;
+  height: 55px;
+  left: 745px;
+  top: 110px;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
+  background:rgba(121, 141, 228, 0.66);
+  border-radius: 15px;
+  color:white;
+}
+
+.daml {
+  position: absolute;
+  width: 200px;
+  height: 42px;
+  left: 2px;
+  top: 45px;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 42px;
+  text-align: center;
+
+  color: #FFFFFF;
+}
+
+.ant-menu-item .anticon, .ant-menu-submenu-title .anticon{
+  font-size: 18px;
+  vertical-align: 0.5px;
+}
+
+
+.ant-layout-sider {
+  position: absolute;
+}
+
+.site-layout-background {
+  width: 317px;
+  height: 937px;
+  left: 0px;
+  top: 87px;
+  padding: 0px;
+  background: #4C5B69;
+  
+}
+
+.ant-menu-submenu-title:hover {
+  color: white!important;
+}
+
+.ant-menu-submenu-title.option{
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  line-height: 24px;
+  align-items: center;
+  color: #FFFFFF;
+  
+}
+
+.option{
+  border: 0px;
+  text-indent: 7.5%;
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.ant-menu-inline .ant-menu-submenu-title{
+  background: none;
+}
+
+.ant-menu.ant-menu-light .ant-menu-submenu-open.option{
+  background:#637585;
+}
+
+
+.menu-layout-background{
+  width: 317px;
+  height: 937px;
+  left: 0px;
+  top: 87px;
+  
+  background: #4C5B69;
+}
+
+
+
+
+.ant-menu-item.menu-item{
+  width: 317px;
+  left: 0px;
+  height: 65px;
+  background: #4C5B69;
+  border: 0.5px solid #c1c1c1;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  align-items: center;
+  color: white;
+  margin-top: 0px;
+  margin-bottom:0px;
+}
+
+
+
+.ant-menu.ant-menu-light .ant-menu-item-selected.menu-item{
+  background-color: #798DE4;
+}
+
+.ant-menu-inline .ant-menu-selected::after, .ant-menu-inline .ant-menu-item-selected::after {
+  opacity: 0;
+}
+
+
+
+.menu-item:hover {
+  background-color: #8c9bd1!important;
+  color: white;
+}
+
+.ant-menu-item-selected.menu-item:first-child {
+  border: 0.5px solid rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+.main-menu{
+  background: #4C5B69;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  border: 0px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  align-items: center;
+  
+}
+
+
+.ant-menu-submenu-title .ant-menu-submenu-arrow{
+    background: white;
+}
+
+
+.ant-menu-submenu-arrow::before, .ant-menu-submenu-arrow::after {
+  background: white!important;
+
+}
+
+
+
+.header {
+    position: absolute;
+    width: 1440px;
+    height: 87px;
+    left: 0px;
+    top: 0px;
+    
+    background: #798DE4;
+}
+
+.title {
+  position: absolute;
+  width: 91px;
+  height: 35px;
+  left: 79px;
+  top: 28px;
+  
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+  
+  color: #FFFFFF;
+}
+
+.user{
+  position: absolute;
+  height: 35px;
+  left: 1106px;
+  top: 27px;
+
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 35px;
+  display: flex;
+  align-items: center;
+
+color: #FFFFFF;
+}
+
+.usericon{
+  background-color: #FFFFFF;
+}
+
+.submenu-data{
+  position: absolute;
+  width: 316px;
+  height: 45px;
+  left: 0px;
+  align-items: center;
+  color:white;
+  background: #7A8EA0;
+  border: 0.5px solid #C1C1C1;
+  text-indent: 5%;
+  font-family: "Roboto", sans-serif;
+}
+
+.ant-menu.ant-menu-light .ant-menu-item-selected.submenu-data{
+  background: #7083CB;
+}
+
+.submenu-data:hover{
+  background: #8c9bd1;
+  color:white;
+}
+
+.ant-menu-vertical .ant-menu-item, .ant-menu-vertical-left .ant-menu-item, .ant-menu-vertical-right .ant-menu-item, .ant-menu-inline .ant-menu-item, .ant-menu-vertical .ant-menu-submenu-title, .ant-menu-vertical-left .ant-menu-submenu-title, .ant-menu-vertical-right .ant-menu-submenu-title, .ant-menu-inline .ant-menu-submenu-title {
+  margin-top: 0px;
+  margin-bottom: 0px;
 }

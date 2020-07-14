@@ -5,9 +5,9 @@ const initialState = {
   widgetBackgroundColor: "#ffffff",
   gridBackGroundColor: "#D9E0EC",
   selectedWidgetBackgroundColor: "#D9E0EC",
-  primary: "#2ce0d0",
-  secondary: "#903dc9",
-  extendedColors: ["#33b3be", "#8763d2", "#136d7d", "#b981d5"]
+  primary: "#ffb1ce",
+  secondary: "#a2c8a2",
+  extendedColors: ["#8fbc8b", "#ffdb8c", "#fac3e0", "#c98cd4"]
 };
 
 const ThemeContext = createContext(initialState);

@@ -26,6 +26,14 @@ class WidgetModal extends React.Component {
     });
   };
 
+  renderError() {
+    return(
+      <div className="ui error message">
+        You must select a widget type before continuing.
+      </div>
+    );
+  }
+
   handleOk = e => {
     console.log(this.state);
     if (this.state.step === 1) {
@@ -75,7 +83,7 @@ class WidgetModal extends React.Component {
     return (
       <span>
         <Button
-          className="modal-button"
+          className="modal-button-add"
           type="primary"
           onClick={this.showModal}
         >
@@ -88,6 +96,7 @@ class WidgetModal extends React.Component {
           onCancel={this.handleCancel}
           okText={okText}
           width="50rem"
+          className="modal-style"
           bodyStyle={{
             overflowY: "scroll",
             height: "50rem",
@@ -97,7 +106,7 @@ class WidgetModal extends React.Component {
           }}
         >
           {this.state.errorMessage ? (
-            <div style={{ height: "4rem" }}>{this.state.errorMessage}</div>
+            <div style={{ height: "4rem", color: "red" }}>{this.state.errorMessage}</div>
           ) : (
             ""
           )}

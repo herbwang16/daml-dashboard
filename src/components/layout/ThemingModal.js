@@ -12,7 +12,7 @@ const themeProperties = {
 };
 
 class ThemingModal extends React.Component {
-  state = { visible: false, color: "#fff", theme: {}, activeSetting: "" };
+  state = { visible: false, color: "#FFF", theme: {}, activeSetting: "" };
 
   static contextType = ThemeContext;
 
@@ -90,7 +90,7 @@ class ThemingModal extends React.Component {
     return (
       <span>
         <Button
-          className="modal-button"
+          className="modal-button-theme"
           type="primary"
           onClick={this.showModal}
         >
@@ -103,13 +103,15 @@ class ThemingModal extends React.Component {
           onCancel={this.handleCancel}
           okText="Ok"
           width="50rem"
+
+          className="modal-style"
           bodyStyle={{
             overflowY: "scroll",
             padding: "2rem 3rem"
           }}
         >
           {this.state.errorMessage ? (
-            <div style={{ height: "4rem" }}>{this.state.errorMessage}</div>
+            <div style={{ height: "4rem", color: "red"}}>{this.state.errorMessage}</div>
           ) : (
             ""
           )}
