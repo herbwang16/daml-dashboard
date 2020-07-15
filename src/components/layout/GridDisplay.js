@@ -99,8 +99,6 @@ class GridDisplay extends React.PureComponent {
 
   createElement = el => {
     const { theme, dispatch } = this.context;
-
-    console.log(el);
     const removeStyle = {
       position: "absolute",
       right: "2px",
