@@ -11,15 +11,15 @@ class ProtectedRoute extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    async componentWillMount() {
         await ReadUser(localStorage.getItem('token')).then(() => this.setState({loading: false, auth: true})).catch(() => {this.setState({loading: false, auth: false})});
     }
 
     render() {
-        const Component = this.props.component;
+        const { Component, ...rest } = this.props;
 
         return (
-        <Route path = {this.props.path} render = {(props) => (
+        <Route {...rest} render = {(props) => (
             this.state.loading ? 
                 (
                     <div>LOADING dot dot dot</div>
@@ -27,7 +27,7 @@ class ProtectedRoute extends React.Component {
                 (
                     this.state.auth ? 
                     (
-                        <Component />
+                        <Component {...props}/>
                     ) :
                     (
                         <Redirect to={{ pathname: '/login' }} />

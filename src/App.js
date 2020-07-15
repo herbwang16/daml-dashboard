@@ -25,15 +25,16 @@ function App() {
     <ThemeProvider>
       <Router>
         <ProtectedRoute
-          path="/(|home|)"
+          path='/(|home|)'
           component={() => <NavBar title="Peagle" user="DAML" />}
         />
-        <ProtectedRoute path="/(|home|)" component={SideBar} />
+        <ProtectedRoute path='/(|home|)' component={SideBar} />
         <Switch>
-          <Route path="/login" component={LoginPage} />
-          <Route path="/signup" component={SignUpPage} />
-          <Route path="/reset-password" component={FPPage} />
-          <ProtectedRoute path="/home" component={Homepage} />
+          <Redirect exact path = '/' to = '/home'/>
+          <ProtectedRoute exact path="/home" component={Homepage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/reset-password" component={FPPage} />
         </Switch>
       </Router>
     </ThemeProvider>
