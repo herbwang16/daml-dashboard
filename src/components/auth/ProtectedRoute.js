@@ -16,10 +16,12 @@ class ProtectedRoute extends React.Component {
     }
 
     render() {
-        const { Component, ...rest } = this.props;
+        const { component: Component, ...rest } = this.props;
+        console.log(Component)
 
         return (
-        <Route {...rest} render = {(props) => (
+        <Route {...rest}>
+            {
             this.state.loading ? 
                 (
                     <div>LOADING dot dot dot</div>
@@ -27,13 +29,14 @@ class ProtectedRoute extends React.Component {
                 (
                     this.state.auth ? 
                     (
-                        <Component {...props}/>
+                        <Component/>
                     ) :
                     (
                         <Redirect to={{ pathname: '/login' }} />
                     )
                 )
-        )}/>
+            }
+        </Route>
         );
     }
 }

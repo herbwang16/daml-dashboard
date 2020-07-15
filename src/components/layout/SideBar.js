@@ -3,6 +3,7 @@ import "../../App.css";
 
 import { Layout, Menu} from 'antd';
 import { UserOutlined, ProfileFilled, BlockOutlined, SettingFilled, FileAddFilled, SwitcherOutlined} from '@ant-design/icons';
+import { GetDashboards } from '../../api/api';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -15,13 +16,13 @@ class NavBar extends React.Component {
     console.log('click ', e);
   };
 
+  async componentDidMount() {
+    const dashboards = await GetDashboards();
+    console.log(dashboards);
+  }
 
-
-
-  render(){
+  render() {
     return (
-      
-
       <Layout>
       <Sider width={317} className="site-layout-background">
       <div className="logo"><div className="daml"><span><UserOutlined />DAML</span></div></div>
