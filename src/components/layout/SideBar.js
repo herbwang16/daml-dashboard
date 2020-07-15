@@ -17,7 +17,7 @@ class NavBar extends React.Component {
   };
 
   async componentDidMount() {
-    const dashboards = await GetDashboards();
+    const dashboards = await GetDashboards(localStorage.getItem('token'));
     console.log(dashboards);
   }
 

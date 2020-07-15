@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const client = axios.create({
-	baseURL: "https://peagle-backend.herokuapp.com"
+	// baseURL: "https://peagle-backend.herokuapp.com"
+	baseURL: "http://localhost:5000"
 });
 
 export const Register = async (email, password) => {

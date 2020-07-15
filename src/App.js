@@ -24,14 +24,15 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <ProtectedRoute
+        <Route
           path='/(|home|)'
           component={() => <NavBar title="Peagle" user="DAML" />}
         />
-        <ProtectedRoute path='/(|home|)' component={SideBar} />
+        <Route path='/(|home|)' component={SideBar} />
         <Switch>
           <Redirect exact path = '/' to = '/home'/>
-          <ProtectedRoute exact path="/home" component={Homepage} />
+          <Route exact path="/home" component={Homepage} />
+          <Route path="/home/:id" component={Homepage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/reset-password" component={FPPage} />
