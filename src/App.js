@@ -13,13 +13,15 @@ import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
 function App() {
   return (
-    
-      <ThemeProvider>
-      <Homepage/>
+    <ThemeProvider>
+      
       <SideBar />
+      <Homepage/>
       <NavBar 
       title="Peagle"
       user="DAML"/>
+      
+      
   </ThemeProvider>
   );
 }
