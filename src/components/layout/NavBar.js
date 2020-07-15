@@ -1,20 +1,27 @@
 import React from "react";
-import "../../index.css";
-import {Layout} from "antd";
-import { UserOutlined } from '@ant-design/icons';
+import "../../App.css";
+import {Layout, Button} from "antd";
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import {Logout as logout} from "../../api/api";
 const { Header } = Layout;
 
-const NavBar = (props) => {
-   return (
+class NavBar extends React.Component{
+   
+   
+   render(){
+     return (
     <Layout>
     <Header className="header">
-      <div className="title">{props.title}</div>
-      <div className="user">Welcome, {props.user}</div>
-      <div className="user-icon"><UserOutlined style={{color: "#FFF", fontSize: "35px", position: "absolute", left: "94.1%", right: 
-    "3.19%", top: "24.44%", bottom: "93.95%", backgroundColor:"#FFF"}}/></div>
+      <div className="title">{this.props.title}</div>
+      <div className="user"><span>Welcome, {this.props.user} <UserOutlined/></span></div>
+    <div className="logout-button"><Button onClick={console.log("click")} style={{height:"40px"}}>
+      <span><LogoutOutlined/>   Logout</span>
+    </Button></div>
     </Header>
     </Layout>
    );
+   }
+   
 };
 
 export default NavBar;
