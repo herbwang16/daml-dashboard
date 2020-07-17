@@ -14,6 +14,8 @@ import SimpleAreaChart from "../widgets/SimpleAreaChart";
 import SimplePieChart from "../widgets/SimplePieChart";
 import SimpleRadarChart from "../widgets/SimpleRadarChart";
 import SimpleScatterChart from "../widgets/SimpleScatterChart";
+import TreeMap from "../widgets/TreeMap";
+import VerticalLineChart from "../widgets/VerticalLineChart";
 
 // Import data processing tools
 import { processFile } from "../../tools/dataHandling/csvHandling";
@@ -61,7 +63,20 @@ const widgets = [
     text: "Simple scatter chart",
     value: "Simple scatter chart",
     widget: SimpleScatterChart
-  }
+  },
+  {
+    key: "TreeMap",
+    text: "Tree map",
+    value: "Tree map",
+    widget: TreeMap
+  },
+  {
+    key:"VerticalLineChart",
+    text: "Vertical line chart",
+    value: "Vertical line chart",
+    widget: VerticalLineChart
+    }
+
 ];
 
 class WidgetDataEntry extends React.PureComponent {
@@ -225,7 +240,7 @@ class WidgetDataEntry extends React.PureComponent {
             <WidgetRender {...dataProps} />
           </Col>
           <Col span={24}>
-            <div className="widget-header"> Upload your .CSV file here.</div>
+            <div className="widget-header"> Upload your .XLSX or your .CSV file here.</div>
             <div style={{ margin: "1rem" }}>
               <Upload
                 accept=".csv, .xlsx"
