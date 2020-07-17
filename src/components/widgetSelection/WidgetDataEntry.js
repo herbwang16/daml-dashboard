@@ -16,6 +16,11 @@ import SimpleRadarChart from "../widgets/SimpleRadarChart";
 import SimpleScatterChart from "../widgets/SimpleScatterChart";
 import TreeMap from "../widgets/TreeMap";
 import VerticalLineChart from "../widgets/VerticalLineChart";
+import DashedLineChart from "../widgets/DashedLineChart";
+import PosAndNegBarChart from "../widgets/PosAndNegBarChart";
+import JointLineScatterChart from "../widgets/JointLineScatterChart";
+import ActiveShapePieChart from "../widgets/ActiveShapePieChart";
+import SimpleRadialBarChart from "../widgets/SimpleRadialBarChart";
 
 // Import data processing tools
 import { processFile } from "../../tools/dataHandling/csvHandling";
@@ -71,11 +76,42 @@ const widgets = [
     widget: TreeMap
   },
   {
-    key:"VerticalLineChart",
+    key: "VerticalLineChart",
     text: "Vertical line chart",
     value: "Vertical line chart",
     widget: VerticalLineChart
-    }
+    },
+    {
+    key: "DashedLineChart",
+    text: "Dashed line chart",
+    value: "Dashed line chart",
+    widget: DashedLineChart
+    },
+    {
+      key: "PosAndNegBarChart",
+      text: "Positive and negative bar chart",
+      value: "Positive and negative bar chart",
+      widget: PosAndNegBarChart
+    },
+    {
+    key: "JointLineScatterChart",
+    text: "Joint line scatter chart",
+    value: "Joint line scatter chart",
+    widget: JointLineScatterChart
+  },
+  {
+    key: "ActiveShapePieChart",
+    text: "Active shape pie chart",
+    value: "Active shape pie chart",
+    widget: ActiveShapePieChart
+  },
+  {
+    key: "SimpleRadialBarChart",
+    text: "Simple radial bar chart",
+    value: "Simple radial bar chart",
+    widget: SimpleRadialBarChart
+  }
+  
 
 ];
 
