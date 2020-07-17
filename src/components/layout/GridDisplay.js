@@ -24,10 +24,6 @@ import JointLineScatterChart from "../widgets/JointLineScatterChart";
 import ActiveShapePieChart from "../widgets/ActiveShapePieChart";
 import SimpleRadialBarChart from "../widgets/SimpleRadialBarChart";
 
-//if you're reading this ADD:
-//scatterchart with labels? cells? (what's the difference)
-//radial bar chart
-
 //i don't know if it's with grid display but when you change the axes it shows on the modal but not the actual dashboard
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
