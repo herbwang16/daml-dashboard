@@ -16,6 +16,8 @@ import SimpleAreaChart from "../widgets/SimpleAreaChart";
 import SimplePieChart from "../widgets/SimplePieChart";
 import SimpleRadarChart from "../widgets/SimpleRadarChart";
 import SimpleScatterChart from "../widgets/SimpleScatterChart";
+import TreeMap from "../widgets/TreeMap";
+import VerticalLineChart from "../widgets/VerticalLineChart";
 
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
@@ -61,7 +63,19 @@ const widgetOptions = [
     text: "Simple scatter chart",
     value: "Simple scatter chart",
     widget: SimpleScatterChart
-  }
+  },
+  {
+    key: "TreeMap",
+    text: "Tree map",
+    value: "Tree map",
+    widget: TreeMap
+  },
+  {
+    key:"VerticalLineChart",
+    text: "Vertical line chart",
+    value: "Vertical line chart",
+    widget: VerticalLineChart
+    }
 ];
 
 const widgetDict = {};
