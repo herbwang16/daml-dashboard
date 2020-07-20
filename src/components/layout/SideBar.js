@@ -17,7 +17,7 @@ class NavBar extends React.Component {
   }
 
   handleClick = e => {
-    console.log(this.props.history.push(`/home/${e.item.props.eventKey}`))
+    this.props.history.push(`/home/${e.item.props.eventKey}`)
   };
 
   async componentDidMount() {
@@ -28,7 +28,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <Layout>
-      <Sider width={317} className="site-layout-background">
+      <Sider className="site-layout-background">
       <div className="logo"><div className="daml"><span><UserOutlined />DAML</span></div></div>
         <Menu
           mode="inline"

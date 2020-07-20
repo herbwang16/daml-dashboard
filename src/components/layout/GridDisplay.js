@@ -124,14 +124,17 @@ widgetOptions.forEach(widget => {
 console.log("widget dict:", widgetDict);
 
 class GridDisplay extends React.PureComponent {
+  componentWillReceiveProps() {
+    this.loadDashboard();
+  }
 
   loadDashboard = id => {
     const charts = {
       items: [0, 1, 2, 3, 4].map(function(i, key, list) {
         return {
           i: i.toString(),
-          x: 2,
-          y: i,
+          x: i,
+          y: i*2,
           w: 2,
           h: 2,
           add: i === list.length - 1,
@@ -154,7 +157,7 @@ class GridDisplay extends React.PureComponent {
 
   static contextType = ThemeContext;
 
-  state = this.loadDashboard(2);
+  state = this.loadDashboard();
 
   createElement = el => {
     const { theme, dispatch } = this.context;
@@ -258,7 +261,6 @@ class GridDisplay extends React.PureComponent {
   };
 
   render() {
-    console.log(this.state)
     const { theme, dispatch } = this.context;
 
     return (
