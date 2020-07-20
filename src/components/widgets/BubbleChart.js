@@ -96,7 +96,7 @@ class BubbleChart extends React.Component {
             tick={false}
             tickLine={false}
             axisLine={false}
-            label={{ value: "Sunday", position: "insideRight" }}
+            label={{ value: this.props.x || "Sunday", position: "insideRight" }}
           />
           <ZAxis
             type="number"

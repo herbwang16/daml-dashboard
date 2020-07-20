@@ -12,6 +12,13 @@ import SimpleAreaChart from "../widgets/SimpleAreaChart";
 import SimplePieChart from "../widgets/SimplePieChart";
 import SimpleRadarChart from "../widgets/SimpleRadarChart";
 import SimpleScatterChart from "../widgets/SimpleScatterChart";
+import TreeMap from "../widgets/TreeMap";
+import VerticalLineChart from "../widgets/VerticalLineChart";
+import DashedLineChart from "../widgets/DashedLineChart";
+import PosAndNegBarChart from "../widgets/PosAndNegBarChart";
+import JointLineScatterChart from "../widgets/JointLineScatterChart";
+import ActiveShapePieChart from "../widgets/ActiveShapePieChart";
+import SimpleRadialBarChart from "../widgets/SimpleRadialBarChart";
 
 // Array of modal content views indexed by step number in the widget selection process
 const widgetSteps = [WidgetModalGrid, WidgetDataEntry];
