@@ -548,7 +548,7 @@ body {
 .user{
   position: absolute;
   height: 35px;
-  left: 1006px;
+  left: 70%;
   top: 27px;
 
   font-family: "Roboto", sans-serif;
@@ -566,9 +566,9 @@ body {
   display: flex;
 }
 
-.logout-button{
+.logout-button {
   position: absolute;
-  left: 1278px;
+  left: 92%;
   top: 25px;
   display: flex;
   align-items: center;
