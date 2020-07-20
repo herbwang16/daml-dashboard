@@ -79,7 +79,7 @@ class GridDisplay extends React.PureComponent {
         return {
           i: i.toString(),
           x: 2,
-          y: i * 4,
+          y: i,
           w: 2,
           h: 2,
           add: i === list.length - 1,
@@ -144,27 +144,28 @@ class GridDisplay extends React.PureComponent {
     );
   };
 
-  // generateDOM = () => {
-  //   return _.map(this.state.layouts[this.state.currentBreakpoint], l => {
-  //     return (
-  //       <div key={l.i} className={l.static ? "static" : ""}>
-  //         <div className="hide-button" onClick={this.onPutItem.bind(this, l)}>
-  //           &times;
-  //         </div>
-  //         {l.static ? (
-  //           <span
-  //             className="text"
-  //             title="This item is static and cannot be removed or resized."
-  //           >
-  //             Static - {l.i}
-  //           </span>
-  //         ) : (
-  //           <span className="text">{l.i}</span>
-  //         )}
-  //       </div>
-  //     );
-  //   });
-  // };
+  generateDOM = () => {
+    return _.map(this.state.layouts[this.state.currentBreakpoint], l => {
+      return (
+        <div key={l.i} className={l.static ? "static" : ""}>
+          <div className="hide-button" onClick={this.onPutItem.bind(this, l)}>
+            &times;
+          </div>
+          {l.static ? (
+            <span
+              className="text"
+              title="This item is static and cannot be removed or resized."
+            >
+              Static - {l.i}
+            </span>
+          ) : (
+            <span className="text">{l.i}</span>
+          )}
+        </div>
+      );
+    });
+  };
+
   handleWidgetDropdownChange = (e, { value }) => {
     this.setState({ widgetDropdown: value });
   };
@@ -222,15 +223,15 @@ class GridDisplay extends React.PureComponent {
           </div>
         </center>
         <ResponsiveReactGridLayout
-          onLayoutChange={this.onLayoutChange}
-          onBreakpointChange={this.onBreakpointChange}
-          style={{
-            backgroundColor: theme.gridBackGroundColor,
-            margin: "1rem"
-          }}
-          {...this.props}
+            {...this.props}
+            onBreakpointChange={this.onBreakpointChange}
+            onLayoutChange={this.onLayoutChange}
+            style={{
+              backgroundColor: theme.gridBackGroundColor,
+              margin: "1rem"
+            }}
         >
-          {_.map(this.state.items, el => this.createElement(el))}
+            {_.map(this.state.items, el => this.createElement(el))}
         </ResponsiveReactGridLayout>
       </div>
     );
