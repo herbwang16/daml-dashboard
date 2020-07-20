@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import { Row, Col, Divider } from "antd";
 import "../../css/Landing.css";
 import "antd/dist/antd.css";
-const logo = require("../../images/logo.svg");
+const logo = require("../../images/logoPeagle.svg");
 
 class LoginPage extends React.Component {
   render() {
