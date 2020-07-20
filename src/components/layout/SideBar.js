@@ -4,6 +4,7 @@ import "../../App.css";
 import { Layout, Menu} from 'antd';
 import { UserOutlined, ProfileFilled, BlockOutlined, SettingFilled, FileAddFilled, SwitcherOutlined} from '@ant-design/icons';
 import { GetDashboards } from '../../api/api';
+import { withRouter } from 'react-router-dom';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -11,14 +12,17 @@ const { Sider } = Layout;
 const Option = props => <div>{props.opt}</div>
 
 class NavBar extends React.Component {
+  state = {
+    dashboards: []
+  }
 
   handleClick = e => {
-    console.log('click ', e);
+    console.log(this.props.history.push(`/home/${e.item.props.eventKey}`))
   };
 
   async componentDidMount() {
     const dashboards = await GetDashboards(localStorage.getItem('token'));
-    console.log(dashboards);
+    this.setState({dashboards: dashboards});
   }
 
   render() {
@@ -30,6 +34,7 @@ class NavBar extends React.Component {
           mode="inline"
           /* defaultSelectedKeys={['1']}
            defaultOpenKeys={['sub1']}*/
+           onClick = {this.handleClick}
            style={{ height: '100%', borderRight: 0 }}
            className="menu-layout-background"
         >
@@ -39,9 +44,11 @@ class NavBar extends React.Component {
             <BlockOutlined/>
             <span>My Dashboards</span>
             </span>}>
-            <Menu.Item key="1" className="menu-item"><Option opt="BSR v1"/></Menu.Item>
-            <Menu.Item key="2" className="menu-item" ><Option opt="Phoenix Project" /></Menu.Item>
-            <Menu.Item key="3" className="menu-item"><Option opt="DoD" /></Menu.Item>
+            {
+              this.state.dashboards.map(dash => {
+                return <Menu.Item key={dash._id} className="menu-item"><Option opt={dash.name}/></Menu.Item>
+              })
+            }
             <Menu.Item key="4" className="menu-item"><FileAddFilled />Add Dashboard</Menu.Item>
           </SubMenu>
 

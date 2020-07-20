@@ -72,6 +72,26 @@ widgetOptions.forEach(widget => {
 console.log("widget dict:", widgetDict);
 
 class GridDisplay extends React.PureComponent {
+
+  loadDashboard = id => {
+    const charts = {
+      items: [0, 1, 2, 3, 4].map(function(i, key, list) {
+        return {
+          i: i.toString(),
+          x: 2,
+          y: i * 4,
+          w: 2,
+          h: 2,
+          add: i === list.length - 1,
+        }; 
+      }),
+      newCounter: 0,
+      widgetDropdown: ""
+    }
+    console.log('LOADING CHARTS')
+    return charts
+  }
+
   static defaultProps = {
     className: "layout",
     isDraggable: true,
@@ -82,20 +102,7 @@ class GridDisplay extends React.PureComponent {
 
   static contextType = ThemeContext;
 
-  state = {
-    items: [0, 1, 2, 3, 4].map(function(i, key, list) {
-      return {
-        i: i.toString(),
-        x: i * 2,
-        y: 0,
-        w: 2,
-        h: 2,
-        add: i === list.length - 1
-      };
-    }),
-    newCounter: 0,
-    widgetDropdown: ""
-  };
+  state = this.loadDashboard(2);
 
   createElement = el => {
     const { theme, dispatch } = this.context;
@@ -114,7 +121,12 @@ class GridDisplay extends React.PureComponent {
       <div
         className="react-grid-item"
         key={i}
-        data-grid={el}
+        data-grid={{
+          x: el.x,
+          y: el.y,
+          w: el.w,
+          h: el.h
+        }}
         style={{
           padding: "1rem",
           backgroundColor: theme.widgetBackgroundColor
@@ -132,27 +144,27 @@ class GridDisplay extends React.PureComponent {
     );
   };
 
-  generateDOM = () => {
-    return _.map(this.state.layouts[this.state.currentBreakpoint], l => {
-      return (
-        <div key={l.i} className={l.static ? "static" : ""}>
-          <div className="hide-button" onClick={this.onPutItem.bind(this, l)}>
-            &times;
-          </div>
-          {l.static ? (
-            <span
-              className="text"
-              title="This item is static and cannot be removed or resized."
-            >
-              Static - {l.i}
-            </span>
-          ) : (
-            <span className="text">{l.i}</span>
-          )}
-        </div>
-      );
-    });
-  };
+  // generateDOM = () => {
+  //   return _.map(this.state.layouts[this.state.currentBreakpoint], l => {
+  //     return (
+  //       <div key={l.i} className={l.static ? "static" : ""}>
+  //         <div className="hide-button" onClick={this.onPutItem.bind(this, l)}>
+  //           &times;
+  //         </div>
+  //         {l.static ? (
+  //           <span
+  //             className="text"
+  //             title="This item is static and cannot be removed or resized."
+  //           >
+  //             Static - {l.i}
+  //           </span>
+  //         ) : (
+  //           <span className="text">{l.i}</span>
+  //         )}
+  //       </div>
+  //     );
+  //   });
+  // };
   handleWidgetDropdownChange = (e, { value }) => {
     this.setState({ widgetDropdown: value });
   };
@@ -193,6 +205,7 @@ class GridDisplay extends React.PureComponent {
   };
 
   render() {
+    console.log(this.state)
     const { theme, dispatch } = this.context;
 
     return (
