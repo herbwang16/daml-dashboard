@@ -23,13 +23,13 @@ class NavBar extends React.Component {
       
 
       <Layout>
-      <Sider width={317} className="site-layout-background">
+      <Sider width={260} className="site-layout-background">
       <div className="logo"><div className="daml"><span><UserOutlined />DAML</span></div></div>
         <Menu
           mode="inline"
           /* defaultSelectedKeys={['1']}
            defaultOpenKeys={['sub1']}*/
-           style={{ height: '100%', borderRight: 0 }}
+           style={{ height: '100%'}}
            className="menu-layout-background"
         >
 
