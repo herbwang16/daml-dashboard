@@ -1,14 +1,17 @@
 import React from "react";
 import { Modal, Button, Input, Row, Col } from "antd";
 import { ThemeContext } from "../context/ThemeContext";
+import {EditOutlined} from "@ant-design/icons";
 
 import { SketchPicker } from "react-color";
 
 const themeProperties = {
+  name: "Dashboard name",
   widgetBackgroundColor: "Widget background color",
   gridBackGroundColor: "Grid background color",
   primary: "Primary color",
   secondary: "Secondary color"
+  
 };
 
 class ThemingModal extends React.Component {
@@ -94,7 +97,7 @@ class ThemingModal extends React.Component {
           type="primary"
           onClick={this.showModal}
         >
-          Customize Theming
+          <EditOutlined />
         </Button>
         <Modal
           title={"Customize Theming"}
