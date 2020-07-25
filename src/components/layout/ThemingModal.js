@@ -6,8 +6,7 @@ import {EditOutlined} from "@ant-design/icons";
 import { SketchPicker } from "react-color";
 
 const themeProperties = {
-  name: "Dashboard name",
-  widgetBackgroundColor: "Widget background color",
+  widgetBackgroundColor: "Widget background color"
   gridBackGroundColor: "Grid background color",
   primary: "Primary color",
   secondary: "Secondary color"
