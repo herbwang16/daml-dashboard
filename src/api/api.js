@@ -83,7 +83,7 @@ export const CreateChart = async(token, chart) => {
 	return data;
 }
 
-export const UpdateChart = async(token, chart, id) => {
+export const UpdateChart = async(token, id, chart) => {
 	const { data } = await client.put(`/charts/${id}`, chart,
 	{
 		headers: {
@@ -104,4 +104,24 @@ export const GetCharts = async(token, id) => {
 	return data;
 }
 
-export default { Register, Login, Logout, LogoutAll, ReadUser, CreateDashboard, GetDashboards, CreateChart, UpdateChart, GetCharts };
+export const EditDashboard = async(token, id, ids) => {
+	const { data } = await client.patch(`/dashboards/edit/${id}`, {charts: ids}, {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+}
+
+export const DeleteChart = async(token, id) => {
+	const { data } = await client.delete(`/charts/${id}`, {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+}
+
+export default { Register, Login, Logout, LogoutAll, ReadUser, CreateDashboard, GetDashboards, CreateChart, UpdateChart, GetCharts, DeleteChart };

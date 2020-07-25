@@ -23,7 +23,7 @@ import PosAndNegBarChart from "../widgets/PosAndNegBarChart";
 import JointLineScatterChart from "../widgets/JointLineScatterChart";
 import ActiveShapePieChart from "../widgets/ActiveShapePieChart";
 import SimpleRadialBarChart from "../widgets/SimpleRadialBarChart";
-import { GetCharts, CreateChart, UpdateChart } from '../../api/api';
+import { GetCharts, CreateChart, UpdateChart, EditDashboard, DeleteChart } from '../../api/api';
 import { withRouter } from 'react-router-dom';
 
 //i don't know if it's with grid display but when you change the axes it shows on the modal but not the actual dashboard
@@ -131,6 +131,7 @@ class GridDisplay extends React.PureComponent {
   }
 
   prevKey = '';
+  rem = [];
 
   componentDidUpdate() {
     const { context, dispatch } = this.context;
@@ -144,7 +145,6 @@ class GridDisplay extends React.PureComponent {
     const { context, dispatch } = this.context;
     const c = await GetCharts(localStorage.getItem('token'), context.key)
       .then(res => {return res})
-    console.log(c)
     const charts = {
       items: c.map(function(i, key, list) {
         return {
@@ -271,22 +271,44 @@ class GridDisplay extends React.PureComponent {
 
   onRemoveItem = i => {
     console.log("removing", i);
+    if(i.charAt(0) !== 'n')
+      this.rem.push(i);
     this.setState({ items: _.reject(this.state.items, { i: i }) });
   };
 
   save = async () => {
+    const { context, dispatch } = this.context;
     console.log(this.state.items);
     console.log(this.state.layout);
-    let ex = [];
-    let n = [];
-    this.state.layout.forEach((chart, i) => {
-      let add = {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType};
-      if(chart.i.charAt(0) === 'n')
-        CreateChart(localStorage.getItem('token'), )
-      else 
-        ex.push(add);
-    })
-    console.log(ex, n)
+    let nw = [];
+    for(var i = 0; i < this.state.items.length; i++) {
+      const chart = this.state.layout[i];
+      if(chart.i.charAt(0) === 'n') {
+        await CreateChart(localStorage.getItem('token'), {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType})
+          .then(res => {
+            let newitems = [...this.state.items];
+            let newitem = {...newitems[i]};
+            newitem.i = res._id;
+            nw.push(res._id);
+            this.setState({items: newitems});
+          })
+      }
+      else {
+          await UpdateChart(localStorage.getItem('token'), chart.i, {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType})
+            .catch(err => console.log(err));
+      }
+    }
+    if(this.rem.length > 0) {
+      for(var id of this.rem) {
+        await DeleteChart(localStorage.getItem('token'), id)
+          .catch(err => console.log(err))
+      }
+      this.rem = [];
+    }
+    if(nw.length > 0) {
+      await EditDashboard(localStorage.getItem('token'), context.key, nw)
+        .catch(err => console.log(err));
+    }
   }
 
   render() {

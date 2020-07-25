@@ -16,17 +16,18 @@ class AddModal extends React.Component {
 
   handleCancel = () => {
       this.setState({visible: false});
-      console.log(this.state.visible, 'hello')
   }
 
   handleOk = async () => {
-      const { sidebar, dispatch } = this.context;
+      const { context, dispatch } = this.context;
       const dashboard = await CreateDashboard(localStorage.getItem('token'), this.state.title);
-      const dashboards = await GetDashboards(localStorage.getItem('token'))
-        .catch(err => {console.log(err); return []});
-      dispatch({type: 'CHANGE SIDEBAR', payload: {dashboards: dashboards}});
-      this.props.history.push(`home/${dashboard._id}`);
-      this.setState({visible: false});
+      dispatch({type: 'CHANGE SIDEBAR', payload: {dashboards: context.dashboards.concat(dashboard)}});
+      console.log(context)
+      if(context.key === '')
+        this.props.history.push(`/home/${dashboard._id}`);
+      else
+        this.props.history.push(dashboard._id);
+      this.setState({title: '', visible: false});
   }
 
   render() {
