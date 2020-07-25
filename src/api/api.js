@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const client = axios.create({
 	// baseURL: "https://peagle-backend.herokuapp.com"
-	baseURL: "http://localhost:4000"
+	baseURL: "http://localhost:5000"
 });
 
 export const Register = async (email, password) => {
@@ -52,8 +52,8 @@ export const ReadUser = async (token) => {
 	return data;
 };
 
-export const CreateDashboard = async(token) => {
-	const { data } = await client.post("/dashboard", null, {
+export const CreateDashboard = async(token, title) => {
+	const { data } = await client.post("/dashboards", {name: title}, {
 		headers: {
 			'Authorization': `Bearer ${token}`
 		}
@@ -63,7 +63,7 @@ export const CreateDashboard = async(token) => {
 }
 
 export const GetDashboards = async(token) => {
-	const { data } = await client.get("/dashboard/me", {
+	const { data } = await client.get("/dashboards/me", {
 		headers: {
 			'Authorization': `Bearer ${token}`
 		}
@@ -72,4 +72,36 @@ export const GetDashboards = async(token) => {
 	return data;
 }
 
-export default { Register, Login, Logout, LogoutAll, ReadUser, CreateDashboard, GetDashboards };
+export const CreateChart = async(token, chart) => {
+	const { data } = await client.post(`/charts`, chart,
+	{
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+}
+
+export const UpdateChart = async(token, chart, id) => {
+	const { data } = await client.put(`/charts/${id}`, chart,
+	{
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+}
+
+export const GetCharts = async(token, id) => {
+	const { data } = await client.get(`/dashboards/${id}/charts`, {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+}
+
+export default { Register, Login, Logout, LogoutAll, ReadUser, CreateDashboard, GetDashboards, CreateChart, UpdateChart, GetCharts };

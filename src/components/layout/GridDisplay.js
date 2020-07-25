@@ -5,7 +5,7 @@ import _ from "lodash";
 import { Dropdown, Button } from "antd";
 
 import Toolbox from "./Toolbox";
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 import ThemingModal from "./ThemingModal";
 // import widgets
 import WidgetModal from "../widgetSelection/WidgetModal";
@@ -23,6 +23,8 @@ import PosAndNegBarChart from "../widgets/PosAndNegBarChart";
 import JointLineScatterChart from "../widgets/JointLineScatterChart";
 import ActiveShapePieChart from "../widgets/ActiveShapePieChart";
 import SimpleRadialBarChart from "../widgets/SimpleRadialBarChart";
+import { GetCharts, CreateChart, UpdateChart } from '../../api/api';
+import { withRouter } from 'react-router-dom';
 
 //i don't know if it's with grid display but when you change the axes it shows on the modal but not the actual dashboard
 
@@ -124,27 +126,41 @@ widgetOptions.forEach(widget => {
 console.log("widget dict:", widgetDict);
 
 class GridDisplay extends React.PureComponent {
-  componentWillReceiveProps() {
-    this.loadDashboard();
+  state = {
+    items: []
   }
 
-  loadDashboard = id => {
+  prevKey = '';
+
+  componentDidUpdate() {
+    const { context, dispatch } = this.context;
+    if(context.key !== this.prevKey) {
+      this.loadDashboard();
+      this.prevKey = context.key;
+    }
+  }
+
+  loadDashboard = async () => {
+    const { context, dispatch } = this.context;
+    const c = await GetCharts(localStorage.getItem('token'), context.key)
+      .then(res => {return res})
+    console.log(c)
     const charts = {
-      items: [0, 1, 2, 3, 4].map(function(i, key, list) {
+      items: c.map(function(i, key, list) {
         return {
-          i: i.toString(),
-          x: i,
-          y: i*2,
-          w: 2,
-          h: 2,
+          i: i._id.toString(),
+          x: i.grid[0],
+          y: i.grid[1],
+          w: i.grid[2],
+          h: i.grid[3],
+          widgetType: i.type,
           add: i === list.length - 1,
         }; 
       }),
       newCounter: 0,
       widgetDropdown: ""
     }
-    console.log('LOADING CHARTS')
-    return charts
+    this.setState(charts);
   }
 
   static defaultProps = {
@@ -155,12 +171,10 @@ class GridDisplay extends React.PureComponent {
     rowHeight: 100
   };
 
-  static contextType = ThemeContext;
-
-  state = this.loadDashboard();
+  static contextType = Context;
 
   createElement = el => {
-    const { theme, dispatch } = this.context;
+    const { context, dispatch } = this.context;
     const removeStyle = {
       position: "absolute",
       right: "2px",
@@ -184,7 +198,7 @@ class GridDisplay extends React.PureComponent {
         }}
         style={{
           padding: "1rem",
-          backgroundColor: theme.widgetBackgroundColor
+          backgroundColor: context.widgetBackgroundColor
         }}
       >
         <WidgetRender {...el.dataProps} />
@@ -260,8 +274,23 @@ class GridDisplay extends React.PureComponent {
     this.setState({ items: _.reject(this.state.items, { i: i }) });
   };
 
+  save = async () => {
+    console.log(this.state.items);
+    console.log(this.state.layout);
+    let ex = [];
+    let n = [];
+    this.state.layout.forEach((chart, i) => {
+      let add = {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType};
+      if(chart.i.charAt(0) === 'n')
+        CreateChart(localStorage.getItem('token'), )
+      else 
+        ex.push(add);
+    })
+    console.log(ex, n)
+  }
+
   render() {
-    const { theme, dispatch } = this.context;
+    const { context, dispatch } = this.context;
 
     return (
       <div>
@@ -274,6 +303,9 @@ class GridDisplay extends React.PureComponent {
             />
 
             <ThemingModal />
+            <Button style = {{position: 'absolute', margin: '0.5rem', left: 985, fontFamily: "Roboto, sans-serif", top: 170}} type = 'primary' onClick = {this.save}>
+              Save
+            </Button>
           </div>
         </center>
         <ResponsiveReactGridLayout
@@ -281,7 +313,7 @@ class GridDisplay extends React.PureComponent {
             onBreakpointChange={this.onBreakpointChange}
             onLayoutChange={this.onLayoutChange}
             style={{
-              backgroundColor: theme.gridBackGroundColor,
+              backgroundColor: context.gridBackGroundColor,
               margin: "1rem"
             }}
         >
@@ -292,4 +324,4 @@ class GridDisplay extends React.PureComponent {
   }
 }
 
-export default GridDisplay;
+export default withRouter(GridDisplay);

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data = [
   {
@@ -29,11 +29,11 @@ const data = [
 ];
 
 export default class VerticalLineChart extends PureComponent {
-    static contextType = ThemeContext;
+    static contextType = Context;
 
   render() {
-      const { theme, dispatch } = this.context;
-    const { primary, secondary } = theme;
+      const { context, dispatch } = this.context;
+    const { primary, secondary } = context;
     return (
     <ResponsiveContainer width="100%" height="90%">
       <LineChart

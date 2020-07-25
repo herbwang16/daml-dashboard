@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data = [
   {
@@ -28,11 +28,11 @@ const style = {
 
 
 export default class SimpleRadialBarChart extends PureComponent {
-  static contextType = ThemeContext;
+  static contextType = Context;
 
   render() {
-    const { theme, dispatch } = this.context;
-    const { primary, secondary, extendedColors } = theme;
+    const { context, dispatch } = this.context;
+    const { primary, secondary, extendedColors } = context;
     return (
     <ResponsiveContainer width="100%" height="100%">
       <RadialBarChart data={this.props.data || data}>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Treemap, ResponsiveContainer, Tooltip } from 'recharts';
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data = [
           
@@ -32,13 +32,13 @@ let renderLabel = (entry) => {
 }
 
 class TreeMap extends React.Component {
-static contextType = ThemeContext;
+static contextType = Context;
 
 
 //need to fix the name showing up
   render() {
-    const { theme, dispatch } = this.context;
-    const { primary, secondary } = theme;
+    const { context, dispatch } = this.context;
+    const { primary, secondary } = context;
     return (
         <ResponsiveContainer width="100%" height="90%">
       <Treemap

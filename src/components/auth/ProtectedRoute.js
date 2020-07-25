@@ -13,6 +13,7 @@ class ProtectedRoute extends React.Component {
 
     async componentWillMount() {
         await ReadUser(localStorage.getItem('token')).then(() => this.setState({loading: false, auth: true})).catch(() => {this.setState({loading: false, auth: false})});
+        console.log(this.state)
     }
 
     render() {

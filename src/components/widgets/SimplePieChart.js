@@ -1,6 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data = [
   { name: "Group A", value: 400 },
@@ -37,11 +37,11 @@ const renderCustomizedLabel = ({
 };
 
 class SimplePieChart extends React.Component {
-  static contextType = ThemeContext;
+  static contextType = Context;
 
   render() {
-    const { theme, dispatch } = this.context;
-    const { primary, secondary, extendedColors } = theme;
+    const { context, dispatch } = this.context;
+    const { primary, secondary, extendedColors } = context;
 
     return (
       <ResponsiveContainer width="100%" height="100%">

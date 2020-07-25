@@ -3,8 +3,7 @@ import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
 
 import { Dropdown, Button, Row, Col } from "antd";
-
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from '../context/Context';
 
 // import widgets
 import WidgetModal from "../widgetSelection/WidgetModal";
@@ -115,15 +114,15 @@ const widgets = [
 class WidgetModalGrid extends React.PureComponent {
   state = { selected: "" };
 
-  static contextType = ThemeContext;
+  static contextType = Context;
 
   handleSelectWidget = type => {
     this.setState({ selected: type }, () => this.props.onSelectWidget(type));
   };
 
   render() {
-    const { theme, dispatch } = this.context;
-    const { selectedWidgetBackgroundColor, widgetBackgroundColor } = theme;
+    const { context, dispatch } = this.context;
+    const { selectedWidgetBackgroundColor, widgetBackgroundColor } = context;
 
     return (
       <Row gutter={[16, 16]}>

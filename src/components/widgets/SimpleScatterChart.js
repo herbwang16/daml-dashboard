@@ -9,7 +9,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data = [
   { x: 100, y: 200, z: 200 },
@@ -21,11 +21,11 @@ const data = [
 ];
 
 class SimpleScatterChart extends React.Component {
-  static contextType = ThemeContext;
+  static contextType = Context;
 
   render() {
-    const { theme, dispatch } = this.context;
-    const { primary, secondary } = theme;
+    const { context, dispatch } = this.context;
+    const { primary, secondary } = context;
     return (
       <ResponsiveContainer width="100%" height="100%">
         <ScatterChart>

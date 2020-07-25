@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Button, Input, Row, Col } from "antd";
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 import { SketchPicker } from "react-color";
 
@@ -14,11 +14,11 @@ const themeProperties = {
 class ThemingModal extends React.Component {
   state = { visible: false, color: "#FFF", theme: {}, activeSetting: "" };
 
-  static contextType = ThemeContext;
+  static contextType = Context;
 
   componentDidMount = () => {
-    const { theme, dispatch } = this.context;
-    this.setState({ theme: theme });
+    const { context, dispatch } = this.context;
+    this.setState({ theme: context });
   };
 
   showModal = () => {
@@ -61,7 +61,7 @@ class ThemingModal extends React.Component {
   };
 
   render() {
-    const { theme, dispatch } = this.context;
+    const { context, dispatch } = this.context;
 
     const themeSettings = Object.keys(themeProperties).map((key, index) => (
       <div
@@ -70,7 +70,7 @@ class ThemingModal extends React.Component {
         style={{
           cursor: "pointer",
           backgroundColor:
-            this.state.activeSetting === key ? theme.primary + "30" : "",
+            this.state.activeSetting === key ? context.primary + "30" : "",
           padding: "0.5rem"
         }}
         onClick={() => this.handleChangeActiveSetting(key)}

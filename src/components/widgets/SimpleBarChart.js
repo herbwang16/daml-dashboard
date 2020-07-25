@@ -9,7 +9,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data = [
   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -22,12 +22,12 @@ const data = [
 ];
 
 class SimpleBarChart extends React.Component {
-  static contextType = ThemeContext;
+  static contextType = Context;
 
   // TODO: map y to output bars
   render() {
-    const { theme, dispatch } = this.context;
-    const { primary, secondary } = theme;
+    const { context, dispatch } = this.context;
+    const { primary, secondary } = context;
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={this.props.data || data}>

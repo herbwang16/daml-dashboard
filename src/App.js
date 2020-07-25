@@ -6,6 +6,7 @@ import SideBar from "./components/layout/SideBar";
 import NavBar from "./components/layout/NavBar";
 // Import context
 import { ThemeProvider } from "./components/context/ThemeContext";
+import { ContextProvider } from "./components/context/Context";
 
 import "semantic-ui-css/semantic.min.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
@@ -22,8 +23,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   return (
-    <ThemeProvider>
-      <Router>
+    <Router>
+      <ContextProvider>
         <Route
           path='/(|home|)'
           component={() => <NavBar title="Peagle" user="DAML" />}
@@ -31,14 +32,14 @@ function App() {
         <Route path='/(|home|)' component={SideBar} />
         <Switch>
           <Redirect exact path = '/' to = '/home'/>
-          <Route exact path="/home" component={Homepage} />
+          <ProtectedRoute exact path="/home" component={Homepage} />
           <Route path="/home/:id" component={Homepage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/signup" component={SignUpPage} />
           <Route exact path="/reset-password" component={FPPage} />
         </Switch>
-      </Router>
-    </ThemeProvider>
+      </ContextProvider>
+    </Router>
   );
 }
 

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine, ResponsiveContainer
 } from 'recharts';
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data = [
   {
@@ -29,10 +29,10 @@ const data = [
 ];
 
 export default class PosAndNegBarChart extends PureComponent {
-    static contextType = ThemeContext;
+    static contextType = Context;
   render() {
-      const { theme, dispatch } = this.context;
-      const { primary, secondary } = theme;
+      const { context, dispatch } = this.context;
+      const { primary, secondary } = context;
     return (
         <ResponsiveContainer width="100%" height="100%">
       <BarChart

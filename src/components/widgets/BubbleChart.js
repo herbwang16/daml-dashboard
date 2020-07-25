@@ -9,7 +9,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 const data01 = [
   { hour: "12a", index: 1, value: 170 },
@@ -44,7 +44,7 @@ const parseDomain = () => [
 ];
 
 class BubbleChart extends React.Component {
-  static contextType = ThemeContext;
+  static contextType = Context;
   renderTooltip = props => {
     const { active, payload } = props;
 
@@ -74,8 +74,8 @@ class BubbleChart extends React.Component {
     const domain = parseDomain();
     const range = [16, 225];
 
-    const { theme, dispatch } = this.context;
-    const { primary, secondary } = theme;
+    const { context, dispatch } = this.context;
+    const { primary, secondary } = context;
 
     return (
       <ResponsiveContainer width="100%" height="50%" justify="center">

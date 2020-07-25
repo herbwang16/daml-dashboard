@@ -82,12 +82,9 @@ body {
 
 .modal-button-theme{
   position: absolute;
-  top:105px;
-  left: 1275px;
+  top: 170px;
+  left: 628px;
   margin: 0.5rem;
-  font-size: 24px;
-  height: 50px;
-
   font-family:"Roboto", sans-serif;
 }
 
@@ -446,6 +443,7 @@ body {
   font-weight: 300;
   font-size: 24px;
   line-height: 28px;
+  display: flex;
   align-items: center;
   border: 0.5px solid #C1C1C1;
   color: white;

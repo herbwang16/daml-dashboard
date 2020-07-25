@@ -3,7 +3,7 @@ import { Dropdown, Row, Col, Upload, Button, Menu } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { DownOutlined } from "@ant-design/icons";
 
-import { ThemeContext } from "../context/ThemeContext";
+import { Context } from "../context/Context";
 
 // import widgets
 import WidgetModal from "../widgetSelection/WidgetModal";
@@ -126,7 +126,7 @@ class WidgetDataEntry extends React.PureComponent {
     rerenderWidget: false
   };
 
-  static contextType = ThemeContext;
+  static contextType = Context;
 
   handleFileChange = info => {
     this.setState({
@@ -208,7 +208,7 @@ class WidgetDataEntry extends React.PureComponent {
   };
 
   render() {
-    const { theme, dispatch } = this.context;
+    const { context, dispatch } = this.context;
 
     const { processedFile } = this.state;
     const { content, headers } = processedFile;

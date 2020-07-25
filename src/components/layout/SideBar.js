@@ -4,7 +4,9 @@ import "../../App.css";
 import { Layout, Menu} from 'antd';
 import { UserOutlined, ProfileFilled, BlockOutlined, SettingFilled, FileAddFilled, SwitcherOutlined} from '@ant-design/icons';
 import { GetDashboards } from '../../api/api';
+import { Context } from "../context/Context";
 import { withRouter } from 'react-router-dom';
+import AddModal from './AddModal';
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
@@ -16,40 +18,43 @@ class NavBar extends React.Component {
     dashboards: []
   }
 
-  handleClick = e => {
+  changePage = e => {
+    let sub = e.item.props;
+    let subs = [];
+    while(sub.parentMenu.constructor.name === 'SubMenu') {
+      subs.push(sub.parentMenu.props.eventKey);
+      sub = sub.parentMenu.props;
+    }
     this.props.history.push(`/home/${e.item.props.eventKey}`)
   };
 
-  async componentDidMount() {
-    const dashboards = await GetDashboards(localStorage.getItem('token'));
-    this.setState({dashboards: dashboards});
-  }
+  static contextType = Context;
 
   render() {
+    const { context, dispatch } = this.context;
     return (
       <Layout>
       <Sider className="site-layout-background">
       <div className="logo"><div className="daml"><span><UserOutlined />DAML</span></div></div>
         <Menu
           mode="inline"
-          /* defaultSelectedKeys={['1']}
-           defaultOpenKeys={['sub1']}*/
-           onClick = {this.handleClick}
-           style={{ height: '100%', borderRight: 0 }}
-           className="menu-layout-background"
+          style={{ height: '100%', borderRight: 0 }}
+          className="menu-layout-background"
+          selectedKeys = {[context.key]}
+          defaultOpenKeys = {context.submenu}
         >
 
-          <SubMenu key="sub1"  className="main-menu" title={
+          <SubMenu key="sub1" className="main-menu" title={
             <span>
             <BlockOutlined/>
             <span>My Dashboards</span>
             </span>}>
             {
-              this.state.dashboards.map(dash => {
-                return <Menu.Item key={dash._id} className="menu-item"><Option opt={dash.name}/></Menu.Item>
+              context.dashboards.map(dash => {
+                return <Menu.Item key={dash._id} className="menu-item" onClick = {this.changePage}><Option opt={dash.name}/></Menu.Item>
               })
             }
-            <Menu.Item key="4" className="menu-item"><FileAddFilled />Add Dashboard</Menu.Item>
+            <AddModal/>
           </SubMenu>
 
 
@@ -65,7 +70,7 @@ class NavBar extends React.Component {
               <Option opt={<span><SwitcherOutlined/>PeanutButter.csv</span>}/>
             </Menu.Item>
             <Menu.Item key="6" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BSR API</span>}/></Menu.Item>
-            <Menu.Item key="7" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Sales.csv</span>}/></Menu.Item>
+            <Menu.Item onClick = {this.changePage} key="7" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Sales.csv</span>}/></Menu.Item>
             </SubMenu>
 
             <SubMenu key="g2" className="option" title={<Option opt="Phoenix Project" />}>
@@ -99,4 +104,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
