@@ -278,13 +278,10 @@ class GridDisplay extends React.PureComponent {
 
   save = async () => {
     const { context, dispatch } = this.context;
-    console.log(this.state.items);
-    console.log(this.state.layout);
     let nw = [];
-    for(var i = 0; i < this.state.items.length; i++) {
-      const chart = this.state.layout[i];
+    await Promise.all(this.state.layout.map((chart, i) => {
       if(chart.i.charAt(0) === 'n') {
-        await CreateChart(localStorage.getItem('token'), {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType})
+        return CreateChart(localStorage.getItem('token'), {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType})
           .then(res => {
             let newitems = [...this.state.items];
             let newitem = {...newitems[i]};
@@ -294,10 +291,10 @@ class GridDisplay extends React.PureComponent {
           })
       }
       else {
-          await UpdateChart(localStorage.getItem('token'), chart.i, {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType})
+          return UpdateChart(localStorage.getItem('token'), chart.i, {grid: [chart.x, chart.y, chart.w, chart.h], type: this.state.items[i].widgetType})
             .catch(err => console.log(err));
       }
-    }
+    }))
     if(this.rem.length > 0) {
       for(var id of this.rem) {
         await DeleteChart(localStorage.getItem('token'), id)
