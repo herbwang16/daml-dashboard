@@ -50,7 +50,7 @@ class Homepage extends React.Component {
         );
       default:
         return (
-          <div style = {{lineHeight: 1.2,  position: 'absolute', fontSize: 100, left: 525, top: 300}}>
+          <div style = {{lineHeight: 1.2,  position: 'absolute', fontSize: '5rem', left: 450, top: 225, width: 750}}>
             Welcome, create or choose a dashboard
           </div>
         )
