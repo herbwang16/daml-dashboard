@@ -34,7 +34,7 @@ class NavBar extends React.Component {
     const { context, dispatch } = this.context;
     return (
       <Layout>
-      <Sider className="site-layout-background">
+      <Sider width={260} className="site-layout-background">
       <div className="logo"><div className="daml"><span><UserOutlined />DAML</span></div></div>
         <Menu
           mode="inline"
