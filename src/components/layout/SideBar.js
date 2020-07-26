@@ -35,7 +35,7 @@ class NavBar extends React.Component {
       <div className="logo"><div className="daml"><span><UserOutlined />DAML</span></div></div>
         <Menu
           mode="inline"
-          style={{ height: '100%', borderRight: 0 }}
+          style={{ height: '100%' }}
           className="menu-layout-background"
           selectedKeys = {[context.key]}
           defaultOpenKeys = {context.submenu}
