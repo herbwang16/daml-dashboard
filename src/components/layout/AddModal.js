@@ -34,7 +34,7 @@ class AddModal extends React.Component {
     return (
       <span>
         <Menu.Item key="4" className="menu-item" {...this.props} onClick = {this.showModal}>
-          <FileAddFilled/>
+          <span><FileAddFilled/>Add Dashboard</span>
         </Menu.Item>
         <Modal
           title={"Add Dashboard"}
