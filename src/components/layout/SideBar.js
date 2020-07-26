@@ -67,7 +67,7 @@ class NavBar extends React.Component {
               <Option opt={<span><SwitcherOutlined/>PeanutButter.csv</span>}/>
             </Menu.Item>
             <Menu.Item key="6" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BSR API</span>}/></Menu.Item>
-            <Menu.Item onClick = {this.changePage} key="7" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Sales.csv</span>}/></Menu.Item>
+            <Menu.Item key="7" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Sales.csv</span>}/></Menu.Item>
             </SubMenu>
 
             <SubMenu key="g2" className="option" title={<Option opt="Phoenix Project" />}>
