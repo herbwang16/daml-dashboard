@@ -14,9 +14,6 @@ const { Sider } = Layout;
 const Option = props => <div>{props.opt}</div>
 
 class NavBar extends React.Component {
-  state = {
-    dashboards: []
-  }
 
   changePage = e => {
     let sub = e.item.props;

@@ -11,8 +11,8 @@ const initialState =
   widgetBackgroundColor: "#ffffff",
   gridBackGroundColor: "#D9E0EC",
   selectedWidgetBackgroundColor: "#D9E0EC",
-  primary: "#ffb1ce",
-  secondary: "#a2c8a2",
+  primary: "#ECBA91",
+  secondary: "#798DE4",
   extendedColors: ["#8fbc8b", "#ffdb8c", "#fac3e0", "#c98cd4"]
 }
 

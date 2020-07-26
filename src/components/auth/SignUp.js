@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Row, Col, Divider, Space } from 'antd';
-import {BrowserRouter, Route, Link} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Register as register} from '../../api/api';
 import "../../css/Landing.css";
 import "antd/dist/antd.css";
@@ -39,10 +39,12 @@ class SignUp extends React.Component {
             alert("Passwords must match!");
         }
         else {
-            // register(this.state.username, this.state.password)
-            // .then(data => console.log(data))
-            // .catch(err => console.log(err));
-            alert('Code commented out to prevent overflowing db')
+            register(this.state.username, this.state.password)
+                .then(data => {
+                    localStorage.setItem('token', data.token);
+                    this.props.history.push('/home');
+                })
+                .catch(err => console.log(err));
         }
     };
 
@@ -161,4 +163,4 @@ class SignUp extends React.Component {
     }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

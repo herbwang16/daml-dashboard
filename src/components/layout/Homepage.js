@@ -35,8 +35,8 @@ class Homepage extends React.Component {
 
   render() {
     const { context, dispatch } = this.context;
-    switch(context.submenu[context.submenu.length-1]) {
-      case('sub1'):
+    switch(!context.key) {
+      case(false):
         return (
           <div>
             <div className="page-title">
