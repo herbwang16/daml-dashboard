@@ -12,7 +12,13 @@ class NavBar extends React.Component{
      return (
     <Layout>
     <Header className="header">
-      <div className="title">{this.props.title}</div>
+    <img
+              src={logo}
+              alt="Logo"
+              style={{maxWidth:"4rem"}}
+            />
+      <div className="title">
+       Peagle</div>
       <div className="user"><span>Welcome, {this.props.user} <UserOutlined/></span></div>
     <div className="logout-button"><Button onClick={console.log("click")} style={{height:"40px"}}>
       <span><LogoutOutlined/>   Logout</span>
