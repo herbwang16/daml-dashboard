@@ -510,10 +510,6 @@ body {
 
 }
 
-
-
-
-
 .header {
     position: fixed;
     width: 100%;
@@ -526,10 +522,10 @@ body {
 
 .title {
   position: absolute;
-  width: 91px;
   height: 35px;
-  left: 79px;
-  top: 28px;
+  left: 110px;
+  top: 21px;
+  width: 200px;
   
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -546,7 +542,7 @@ body {
   position: absolute;
   height: 35px;
   left: 70%;
-  top: 27px;
+  top: 21px;
 
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -566,7 +562,7 @@ body {
 .logout-button {
   position: absolute;
   left: 92%;
-  top: 25px;
+  top: 20px;
   display: flex;
   align-items: center;
 }
