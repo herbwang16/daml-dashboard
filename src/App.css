@@ -40,20 +40,20 @@
 }
 
 .page-title {
-  font-size: 2rem;
-  padding: 1rem;
+  font-size: 1.5rem;
+  padding: 0.5rem;
   z-index: 1;
   position: absolute;
-
+  height: fit-content;
+  word-break: break-word;
   width: 300px;
-  height: 55px;
-  left: 670px;
-  top: 110px;
+  left: 370px;
+  top: 145px;
 
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
-  line-height: 35px;
+  line-height: 1.5rem;
   background:rgba(121, 141, 228, 0.66);
   border-radius: 15px;
   color:white;
