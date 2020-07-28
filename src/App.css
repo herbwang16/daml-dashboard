@@ -85,9 +85,9 @@ body {
 /* MODAL STYLES */
 
 .modal-button-add {
-  position: relative;
+  position: absolute;
   top:170px;
-  left: 815px;
+  left: 1130px;
   margin: 0.5rem;
 
   font-family:"Roboto", sans-serif;
@@ -95,12 +95,9 @@ body {
 
 .modal-button-theme{
   position: absolute;
-  top:105px;
-  left: 1190px;
+  top:85px;
+  left: 1188px;
   margin: 0.5rem;
-  font-size: 24px;
-  height: 50px;
-
   font-family:"Roboto", sans-serif;
 }
 
