@@ -47,8 +47,8 @@
   height: fit-content;
   word-break: break-word;
   width: 300px;
-  left: 370px;
-  top: 145px;
+  left: 285px;
+  top: 102px;
 
   font-family: "Roboto", sans-serif;
   font-style: normal;
@@ -61,6 +61,7 @@
 
 body {
   padding: 20px;
+  overflow-x: scroll;
 }
 #content {
   width: 100%;
@@ -87,18 +88,19 @@ body {
 
 .modal-button-add {
   position: absolute;
-  top:170px;
-  left: 1130px;
+  top: 95px;
+  left: 82.5%;
   margin: 0.5rem;
-
-  font-family:"Roboto", sans-serif;
+  z-index: 3;
+  font-family: "Roboto", sans-serif;
 }
 
 .modal-button-theme{
   position: absolute;
-  top:105px;
-  left: 1190px;
+  top:95px;
+  left: 78%;
   margin: 0.5rem;
+  z-index: 3;
   font-family:"Roboto", sans-serif;
 }
 
@@ -180,14 +182,13 @@ body {
   background: #eee;
 }
 
-.react-grid-layout.layout{
+.react-grid-layout.layout {
   position: relative;
-  height: 430px; 
-  background-color: rgb(217, 224, 236); 
-  margin: 1rem; 
-  width: 900px;
-  top: 175px; 
-  left: 350px;
+  min-height: 100vh;
+  height: 100vh;
+  width: 75vw;
+  top: 125px;
+  left: 270px;
 }
 .layoutJSON {
   background: #ddd;
@@ -386,9 +387,12 @@ body {
   position: absolute;
 }
 
+.ant-layout{
+  background: white;
+}
+
 .site-layout-background {
   width: 160px;
-  height: 917px;
   left: 0px;
   top: 87px;
   display: flex;
@@ -423,8 +427,8 @@ body {
 
 .menu-layout-background{
   width: 260px;
-  height: 917px;
   left: 0px;
+  height: 500px;
   top: 87px;
   z-index: 4;
   background: #4C5B69;
@@ -523,12 +527,21 @@ body {
     background: #798DE4;
 }
 
+.lower-header {
+  position: relative;
+  width: 80%;
+  left: 260px;
+  top: 87px;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
 .title {
   position: absolute;
   width: 91px;
   height: 35px;
-  left: 79px;
-  top: 28px;
+  left: 110px;
+  top: 25px;
   
   font-family: "Roboto", sans-serif;
   font-style: normal;
