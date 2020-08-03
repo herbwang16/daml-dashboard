@@ -525,6 +525,7 @@ body {
     top: 0px;
     z-index: 6;
     background: #798DE4;
+    display: flex;
 }
 
 .lower-header {
@@ -577,7 +578,7 @@ body {
 
 .logout-button {
   position: absolute;
-  left: 92%;
+  left: 90%;
   top: 25px;
   display: flex;
   align-items: center;
