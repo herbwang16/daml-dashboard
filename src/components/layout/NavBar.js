@@ -5,6 +5,7 @@ import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import {Logout as logout} from "../../api/api";
 const { Header } = Layout;
+const logo = require("../../images/logoPeagle.svg");
 
 class NavBar extends React.Component{
    
@@ -21,8 +22,13 @@ class NavBar extends React.Component{
      return (
     <Layout>
     <Header className="header">
-      <div className="title">{this.props.title}</div>
-      <div className="user"><span>Welcome, {this.props.user} <UserOutlined/></span></div>
+      <img
+              src={logo}
+              alt="Logo"
+              style={{maxWidth:"4rem"}}
+            />
+      <div className="title">
+       Peagle</div>
     <div className="logout-button"><Button onClick={this.handleClick} style={{height:"40px"}}>
       <span><LogoutOutlined/>   Logout</span>
     </Button></div>

@@ -323,7 +323,7 @@ class GridDisplay extends React.PureComponent {
             />
 
             <ThemingModal />
-            <Button style = {{position: 'absolute', margin: '0.5rem', left: 985, fontFamily: "Roboto, sans-serif", top: 170}} type = 'primary' onClick = {this.save}>
+            <Button style = {{position: 'absolute', margin: '0.5rem', left: "92%", fontFamily: "Roboto, sans-serif", top: 95}} type = 'primary' onClick = {this.save}>
               Save
             </Button>
           </div>
