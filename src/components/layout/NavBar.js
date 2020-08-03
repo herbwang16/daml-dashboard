@@ -25,10 +25,13 @@ class NavBar extends React.Component{
       <img
               src={logo}
               alt="Logo"
-              style={{maxWidth:"4rem"}}
+              style={{maxWidth:"4rem", position: "absolute", top: 11}}
             />
       <div className="title">
        Peagle</div>
+      <div className="user">
+          <span>Welcome, DAML <UserOutlined/></span> 
+      </div>
     <div className="logout-button"><Button onClick={this.handleClick} style={{height:"40px"}}>
       <span><LogoutOutlined/>   Logout</span>
     </Button></div>
