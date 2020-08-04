@@ -211,51 +211,6 @@ code {
   color: white!important;
 }
 
-.header {
-    position: absolute;
-    width: 1440px;
-    height: 87px;
-    left: 0px;
-    top: 0px;
-    
-    background: #798DE4;
-}
-
-.title {
-  position: absolute;
-  width: 91px;
-  height: 35px;
-  left: 79px;
-  top: 28px;
-  
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 35px;
-  display: flex;
-  align-items: center;
-  
-  color: #FFFFFF;
-}
-
-.user{
-  position: absolute;
-  height: 35px;
-  left: 1106px;
-  top: 27px;
-
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 35px;
-  display: flex;
-  align-items: center;
-
-color: #FFFFFF;
-}
-
 .usericon{
   background-color: #FFFFFF;
 }

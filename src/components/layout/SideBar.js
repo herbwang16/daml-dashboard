@@ -32,7 +32,7 @@ class NavBar extends React.Component {
     return (
       <Layout>
       <Sider width={260} className="site-layout-background">
-      <div className="logo"><div className="daml"><span><UserOutlined />DAML</span></div></div>
+      <div className="logo"><div className="daml"><span><UserOutlined /> DAML</span></div></div>
         <Menu
           mode="inline"
           style={{ height: '100%' }}
