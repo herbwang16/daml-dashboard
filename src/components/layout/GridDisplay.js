@@ -309,6 +309,7 @@ class GridDisplay extends React.PureComponent {
   }
 
   render() {
+    console.log(this.state)
     const { context, dispatch } = this.context;
 
     return (
