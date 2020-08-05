@@ -571,9 +571,7 @@ body {
 .profpage {
   position: absolute;
   width: 100%;
-  border-radius: 3px;
-  border-color: #A3AAAF;
-  border-width: 1px;
+  border-radius: 7px;
   box-shadow: 5px 8px 24px 5px rgba(208, 216, 243, 0.6) ;
 }
 
@@ -624,4 +622,8 @@ body {
 .anticon.anticon-switcher {
   font-size: 17px;
   vertical-align: -2px;
+}
+
+.ant-card-head {
+  text-align: center;
 }

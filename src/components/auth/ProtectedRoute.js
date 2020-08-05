@@ -1,8 +1,11 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { ReadUser } from '../../api/api';
+import { Context } from "../context/Context";
 
 class ProtectedRoute extends React.Component {
+    static contextType = Context;
+
     constructor(props) {
         super(props)
         this.state = {
@@ -12,14 +15,21 @@ class ProtectedRoute extends React.Component {
     }
 
     async componentWillMount() {
+        const { context, dispatch } = this.context;
         console.log(this.state)
-        await ReadUser(localStorage.getItem('token')).then(() => this.setState({loading: false, auth: true})).catch(() => {this.setState({loading: false, auth: false})});
+        await ReadUser(localStorage.getItem('token'))
+            .then(res => {
+                this.setState({loading: false, auth: true});
+                dispatch({type: 'CHANGE PROFILE', payload: {email: res.email}});
+            })
+            .catch(() => {
+                this.setState({loading: false, auth: false})
+            });
         console.log(this.state)
     }
 
     render() {
         const { component: Component, ...rest } = this.props;
-        console.log({...rest});
 
         return (
         <Route {...rest}>

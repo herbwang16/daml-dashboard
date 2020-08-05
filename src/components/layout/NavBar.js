@@ -4,10 +4,13 @@ import {Layout, Button, Card} from "antd";
 import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import {Logout as logout} from "../../api/api";
+import { Context } from "../context/Context";
 const { Header } = Layout;
 const logo = require("../../images/logoPeagle.svg");
 
 class NavBar extends React.Component{
+  static contextType = Context;
+
   state = {
     showprof: false
   }
@@ -25,7 +28,8 @@ class NavBar extends React.Component{
     this.setState({showprof: !this.state.showprof});
   }
    
-   render(){
+   render() {
+    const { context, dispatch } = this.context;
      return (
       <Header className="header">
         <div style = {{position: 'relative', display: 'flex'}}>
@@ -46,7 +50,7 @@ class NavBar extends React.Component{
           </div>
           {this.state.showprof &&
             <div style = {{position: 'relative', width : '100%'}}>
-              <Card title = 'Profile' className = 'profpage'>
+              <Card title = {context.email} className = 'profpage'>
                 <Button onClick={this.handleClick} style = {{borderRadius: '3px'}}>
                   Sign Out <LogoutOutlined/>
                 </Button>

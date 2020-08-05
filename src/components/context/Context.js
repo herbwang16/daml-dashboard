@@ -4,6 +4,7 @@ import React, { createContext, useContext, useReducer, useState } from "react";
 // const ls = JSON.parse(localStorage.getItem('sidebar'))
 const initialState = 
 {
+  email: '',
   key: '',
   title: '',
   submenu: ['sub1'],
@@ -38,6 +39,12 @@ const reducer = (state, action) => {
         ...state,
         ...payload
       };
+    }
+    case "CHANGE PROFILE": {
+      return {
+        ...state,
+        ...payload
+      }
     }
     default:
       return state;
