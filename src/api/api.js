@@ -124,4 +124,15 @@ export const DeleteChart = async(token, id) => {
 	return data;
 }
 
-export default { Register, Login, Logout, LogoutAll, ReadUser, CreateDashboard, GetDashboards, CreateChart, UpdateChart, GetCharts, DeleteChart };
+export const PostData = async(token, dataObj) => {
+	const { data } = await client.post(`/data`, dataObj,
+	{
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+}
+
+export default { Register, Login, Logout, LogoutAll, ReadUser, CreateDashboard, GetDashboards, CreateChart, UpdateChart, GetCharts, DeleteChart, PostData };

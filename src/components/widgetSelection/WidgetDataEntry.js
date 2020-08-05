@@ -6,7 +6,6 @@ import { DownOutlined } from "@ant-design/icons";
 import { Context } from "../context/Context";
 
 // import widgets
-import WidgetModal from "../widgetSelection/WidgetModal";
 import SimpleLineChart from "../widgets/SimpleLineChart";
 import SimpleBarChart from "../widgets/SimpleBarChart";
 import BubbleChart from "../widgets/BubbleChart";
@@ -24,6 +23,7 @@ import SimpleRadialBarChart from "../widgets/SimpleRadialBarChart";
 
 // Import data processing tools
 import { processFile } from "../../tools/dataHandling/csvHandling";
+import { PostData } from "../../api/api";
 import * as XLSX from "xlsx";
 
 const widgets = [
@@ -159,12 +159,14 @@ class WidgetDataEntry extends React.PureComponent {
   };
 
 
-//what the customrequest calls, works for both xlsx and csv
+//what the customrequest calls, works for both xlsx and csv DOES ASYNC MAKE SENSE HERE?
    onFileChange({ file, onSuccess }) {
     console.log(file);
+    let fileName = file['name']
     let workBook = null;
     let jsonHeaderData = null;
     let jsonContentData = null;
+
     const reader = new FileReader();
     reader.onload = (event) => {
       const data = reader.result;
@@ -182,18 +184,22 @@ class WidgetDataEntry extends React.PureComponent {
         initial[name] = XLSX.utils.sheet_to_json(sheet);
         return initial;
       }, {});
-      var headerData = Object.values(jsonHeaderData)[0];
-      var contentData = Object.values(jsonContentData)[0];
-      var headers = headerData[0];
+
+      let headers = Object.values(jsonHeaderData)[0][0];
+      let content = Object.values(jsonContentData)[0];
       console.log(headers);
-      let content = contentData;
       console.log(content);
+
+      PostData({title: fileName, file_data: content})
+
       this.setState({
         processedFile: {content, headers},
         axes: { x: headers[0], y: headers[1] }
       });
       const dataProps = { data: content, ...this.state.axes };
       this.props.onReceiveDataProps(dataProps);
+
+      // what is this for ?
       onSuccess("done", file);
     }
     
