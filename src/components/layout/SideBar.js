@@ -81,6 +81,7 @@ class NavBar extends React.Component {
             <Menu.Item key="12" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BeeMovieScript.txt</span>}/></Menu.Item>
             <Menu.Item key="13" className="submenu-data"><Option opt={<span><SwitcherOutlined/>image.png</span>}/></Menu.Item>
             </SubMenu>
+            <AddModal/>
           </SubMenu>
           <SubMenu key="sub3" className="main-menu" title={
               <span>
