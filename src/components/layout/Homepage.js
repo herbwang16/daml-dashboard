@@ -1,9 +1,12 @@
 import React from "react";
 import GridDisplay from "./GridDisplay";
+import { Layout } from 'antd';
 import { withRouter } from 'react-router-dom';
 import { Context } from "../context/Context";
 import { GetDashboards } from '../../api/api';
 import SideBar from './SideBar';
+
+const { Content } = Layout;
 
 class Homepage extends React.Component {
   static contextType = Context;
@@ -38,21 +41,19 @@ class Homepage extends React.Component {
     switch(!context.key) {
       case(false):
         return (
-          <div>
-            <div className="page-title">
-              <center>{context.title}</center>
-            </div>
-
-            <div>
+          <Content className = 'content'>
+            <div style = {{display: 'flex', justifyContent: 'center', marginTop: '5vh', maxWidth: '100%'}}>
               <GridDisplay/>
             </div>
-          </div>
+          </Content>
         );
       default:
         return (
-          <div style = {{lineHeight: 1.2,  position: 'absolute', fontSize: '5rem', left: 450, top: 225, width: 750}}>
-            Welcome, create or choose a dashboard
-          </div>
+          <Content className = 'content'>
+            <div style = {{lineHeight: 1.2,  fontSize: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10vh'}}>
+              Welcome, create or choose a dashboard
+            </div>
+          </Content>
         )
     }
   }

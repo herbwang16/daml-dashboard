@@ -32,11 +32,11 @@ class NavBar extends React.Component{
     const { context, dispatch } = this.context;
      return (
       <Header className="header">
-        <div style = {{position: 'relative', display: 'flex'}}>
+        <div style = {{position: 'relative', display: 'flex', alignItems: 'center'}}>
           <img
                   src={logo}
                   alt="Logo"
-                  style={{height: '9vh', width: '9vh'}}
+                  style={{height: '7.5vh', width: '7.5vh'}}
           />
           <div className="title">
             Peagle

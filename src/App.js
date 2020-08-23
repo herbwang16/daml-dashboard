@@ -20,25 +20,28 @@ import LoginPage from "./components/auth/LoginPage";
 import FPPage from "./components/auth/FPPage";
 import SignUpPage from "./components/auth/SignUpPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import { Layout } from 'antd';
 
 function App() {
   return (
     <Router>
-      <ContextProvider>
-        <Route
-          path='/(|home|)'
-          component={() => <NavBar title="Peagle" user="DAML" />}
-        />
-        <Route path='/(|home|)' component={SideBar} />
-        <Switch>
-          <Redirect exact path = '/' to = '/home'/>
-          <ProtectedRoute exact path="/home" component={Homepage} />
-          <Route exact path="/home/:id" component={Homepage} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/signup" component={SignUpPage} />
-          <Route exact path="/reset-password" component={FPPage} />
-        </Switch>
-      </ContextProvider>
+      <Layout>
+        <ContextProvider>
+          <Route
+            path='/(|home|)'
+            component={() => <NavBar title="Peagle" user="DAML" />}
+          />
+          <Route path='/(|home|)' component={SideBar} />
+          <Switch>
+            <Redirect exact path = '/' to = '/home'/>
+            <ProtectedRoute exact path="/home" component={Homepage} />
+            <ProtectedRoute exact path="/home/:id" component={Homepage} />
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/signup" component={SignUpPage} />
+            <Route exact path="/reset-password" component={FPPage} />
+          </Switch>
+        </ContextProvider>
+      </Layout>
     </Router>
   );
 }

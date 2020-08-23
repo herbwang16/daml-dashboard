@@ -30,8 +30,9 @@ class NavBar extends React.Component {
   render() {
     const { context, dispatch } = this.context;
     return (
-      <Layout>
-      <Sider width={260} className="site-layout-background">
+      <Sider 
+        className="site-layout-background"
+      >
       <div className="logo"><div className="daml"><span><UserOutlined /> DAML</span></div></div>
         <Menu
           mode="inline"
@@ -41,11 +42,14 @@ class NavBar extends React.Component {
           defaultOpenKeys = {context.submenu}
         >
 
-          <SubMenu key="sub1" className="main-menu" title={
-            <span>
-            <BlockOutlined/>
-            <span>My Dashboards</span>
-            </span>}>
+          <SubMenu key="sub1" 
+            className="main-menu" 
+            title={
+              <span style = {{display: 'flex', alignItems: 'center'}}>
+                <BlockOutlined/>
+                <span>My Dashboards</span>
+              </span>
+            }>
             {
               context.dashboards.map(dash => {
                 return <Menu.Item key={dash._id} className="menu-item" onClick = {this.changePage}><Option opt={dash.name}/></Menu.Item>
@@ -56,39 +60,36 @@ class NavBar extends React.Component {
 
 
           <SubMenu key="sub2" className="main-menu" title={
-              <span>
-            <ProfileFilled/>
-            <span>My Data</span>
+            <span style = {{display: 'flex', alignItems: 'center'}}>
+              <ProfileFilled/>
+              <span>My Data</span>
             </span>
           }
           >
             <SubMenu key="g1" className="option" title={<Option opt="BSR v1" />}>
-            <Menu.Item key="5" className="submenu-data">
-              <Option opt={<span><SwitcherOutlined/>PeanutButter.csv</span>}/>
-            </Menu.Item>
-            <Menu.Item key="6" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BSR API</span>}/></Menu.Item>
-            <Menu.Item key="7" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Sales.csv</span>}/></Menu.Item>
+              <Menu.Item key="5" className="submenu-data">
+                <Option opt={<span><SwitcherOutlined/>PeanutButter.csv</span>}/>
+              </Menu.Item>
+              <Menu.Item key="6" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BSR API</span>}/></Menu.Item>
+              <Menu.Item key="7" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Sales.csv</span>}/></Menu.Item>
             </SubMenu>
 
             <SubMenu key="g2" className="option" title={<Option opt="Phoenix Project" />}>
-            <Menu.Item key="8" className="submenu-data" ><Option opt={<span><SwitcherOutlined/>Companies.csv</span>}/></Menu.Item>
-            <Menu.Item key="9" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Participants.csv</span>}/></Menu.Item>
-            <Menu.Item key="10" className="submenu-data"><Option opt={<span><SwitcherOutlined/>PeanutButter.csv</span>}/></Menu.Item>
+              <Menu.Item key="8" className="submenu-data" ><Option opt={<span><SwitcherOutlined/>Companies.csv</span>}/></Menu.Item>
+              <Menu.Item key="9" className="submenu-data"><Option opt={<span><SwitcherOutlined/>Participants.csv</span>}/></Menu.Item>
+              <Menu.Item key="10" className="submenu-data"><Option opt={<span><SwitcherOutlined/>PeanutButter.csv</span>}/></Menu.Item>
             </SubMenu>
 
             <SubMenu key="g3" className="option" title={<Option opt="DoD" />}>
-            <Menu.Item key="11" className="submenu-data" ><Option opt={<span><SwitcherOutlined/>Jelly.csv</span>}/></Menu.Item>
-            <Menu.Item key="12" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BeeMovieScript.txt</span>}/></Menu.Item>
-            <Menu.Item key="13" className="submenu-data"><Option opt={<span><SwitcherOutlined/>image.png</span>}/></Menu.Item>
+              <Menu.Item key="11" className="submenu-data" ><Option opt={<span><SwitcherOutlined/>Jelly.csv</span>}/></Menu.Item>
+              <Menu.Item key="12" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BeeMovieScript.txt</span>}/></Menu.Item>
+              <Menu.Item key="13" className="submenu-data"><Option opt={<span><SwitcherOutlined/>image.png</span>}/></Menu.Item>
             </SubMenu>
-            <AddModal/>
           </SubMenu>
           <SubMenu key="sub3" className="main-menu" title={
-              <span>
-            <SettingFilled/>
-
-            
-            <span>Account Settings</span>
+            <span style = {{display: 'flex', alignItems: 'center'}}>
+              <SettingFilled/>
+              <span>Account Settings</span>
             </span>
           }>
             <Menu.Item key="14" className="submenu-data">Payment</Menu.Item>
@@ -97,7 +98,6 @@ class NavBar extends React.Component {
           </SubMenu>
         </Menu>
       </Sider>
-      </Layout>
     );
   }
 }

@@ -313,17 +313,19 @@ class GridDisplay extends React.PureComponent {
     const { context, dispatch } = this.context;
 
     return (
-      <div>
-        <center>
+      <div style = {{maxWidth: '100%'}}>
+        <center style = {{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around'}}>
+          <div className="page-title">
+            <center>{context.title}</center>
+          </div>
           <div style={{ padding: "1rem" }}>
             <WidgetModal
               onAddWidget={(type, dataProps) => {
                 this.handleAddWidget(type, dataProps);
               }}
             />
-
             <ThemingModal />
-            <Button style = {{position: 'absolute', margin: '0.5rem', left: "92%", fontFamily: "Roboto, sans-serif", top: 95}} type = 'primary' onClick = {this.save}>
+            <Button style = {{margin: '0.5rem', fontFamily: "Roboto, sans-serif"}} type = 'primary' onClick = {this.save}>
               Save
             </Button>
           </div>
