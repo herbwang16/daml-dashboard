@@ -167,17 +167,6 @@ code {
   background-color: #FFFFFF;
 }
 
-.submenu-data{
-  position: absolute;
-  width: 316px;
-  height: 45px;
-  left: 0px;
-  align-items: center;
-  color:white;
-  background: #7A8EA0;
-  border: 0.5px solid #C1C1C1;
-}
-
 .ant-menu.ant-menu-light .ant-menu-item-selected.submenu-data{
   background: #7083CB;
 }

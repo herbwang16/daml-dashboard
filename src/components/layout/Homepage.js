@@ -28,11 +28,16 @@ class Homepage extends React.Component {
   }
 
   async componentDidUpdate(prevProps) {
-    if(prevProps.match.params.id !== this.props.match.params.id) {
-      const { context, dispatch } = this.context;
-      const id = this.props.match.params.id;
-      const title = context.dashboards.find(dash => dash._id === id).name
-      dispatch({type: 'CHANGE SIDEBAR', payload: {key: id, title: title}});
+    const { context, dispatch } = this.context;
+    const id = this.props.match.params.id;
+    if(prevProps.match.params.id !== id) {
+      if(!id) {
+        dispatch({type: 'CHANGE SIDEBAR', payload: {key: id}});
+      }
+      else {
+        const title = context.dashboards.find(dash => dash._id === id).name
+        dispatch({type: 'CHANGE SIDEBAR', payload: {key: id, title: title}});
+      }
     }
   }
 
@@ -42,7 +47,7 @@ class Homepage extends React.Component {
       case(false):
         return (
           <Content className = 'content'>
-            <div style = {{display: 'flex', justifyContent: 'center', marginTop: '5vh', maxWidth: '100%'}}>
+            <div style = {{display: 'flex', justifyContent: 'center', width: '90%'}}>
               <GridDisplay/>
             </div>
           </Content>
@@ -50,7 +55,7 @@ class Homepage extends React.Component {
       default:
         return (
           <Content className = 'content'>
-            <div style = {{lineHeight: 1.2,  fontSize: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10vh'}}>
+            <div style = {{lineHeight: 1.2,  fontSize: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               Welcome, create or choose a dashboard
             </div>
           </Content>

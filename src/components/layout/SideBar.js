@@ -1,8 +1,8 @@
 import React from "react";
 import "../../App.css";
 
-import { Layout, Menu} from 'antd';
-import { UserOutlined, ProfileFilled, BlockOutlined, SettingFilled, FileAddFilled, SwitcherOutlined} from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+import { LeftOutlined, RightOutlined as right, UserOutlined, ProfileFilled, BlockOutlined, SettingFilled, FileAddFilled, SwitcherOutlined} from '@ant-design/icons';
 import { GetDashboards } from '../../api/api';
 import { Context } from "../context/Context";
 import { withRouter } from 'react-router-dom';
@@ -14,6 +14,9 @@ const { Sider } = Layout;
 const Option = props => <div>{props.opt}</div>
 
 class NavBar extends React.Component {
+  state = {
+    collapsed: false,
+  }
 
   changePage = e => {
     let sub = e.item.props;
@@ -30,7 +33,11 @@ class NavBar extends React.Component {
   render() {
     const { context, dispatch } = this.context;
     return (
-      <Sider 
+      <Sider width = 'inherit'
+        collapsible
+        collapsedWidth = {0}
+        collapsed = {this.state.collapsed}
+        onCollapse = {() => this.setState({collapsed: !this.state.collapsed})}
         className="site-layout-background"
       >
       <div className="logo"><div className="daml"><span><UserOutlined /> DAML</span></div></div>

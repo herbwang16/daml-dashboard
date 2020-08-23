@@ -313,7 +313,7 @@ class GridDisplay extends React.PureComponent {
     const { context, dispatch } = this.context;
 
     return (
-      <div style = {{maxWidth: '100%'}}>
+      <div style = {{width: '100%'}}>
         <center style = {{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around'}}>
           <div className="page-title">
             <center>{context.title}</center>

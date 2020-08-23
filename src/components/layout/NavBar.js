@@ -27,12 +27,16 @@ class NavBar extends React.Component{
   showProf = () => {
     this.setState({showprof: !this.state.showprof});
   }
+
+  goHome = () => {
+    this.props.history.push('/home');
+  }
    
    render() {
     const { context, dispatch } = this.context;
      return (
       <Header className="header">
-        <div style = {{position: 'relative', display: 'flex', alignItems: 'center'}}>
+        <div className = 'home-button' onClick = {this.goHome}>
           <img
                   src={logo}
                   alt="Logo"

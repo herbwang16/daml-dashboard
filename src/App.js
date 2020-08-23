@@ -31,15 +31,17 @@ function App() {
             path='/(|home|)'
             component={() => <NavBar title="Peagle" user="DAML" />}
           />
-          <Route path='/(|home|)' component={SideBar} />
-          <Switch>
-            <Redirect exact path = '/' to = '/home'/>
-            <ProtectedRoute exact path="/home" component={Homepage} />
-            <ProtectedRoute exact path="/home/:id" component={Homepage} />
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/signup" component={SignUpPage} />
-            <Route exact path="/reset-password" component={FPPage} />
-          </Switch>
+          <Layout>
+            <Route path='/(|home|)' component={SideBar} />
+            <Switch>
+              <Redirect exact path = '/' to = '/home'/>
+              <ProtectedRoute exact path="/home" component={Homepage} />
+              <ProtectedRoute exact path="/home/:id" component={Homepage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/signup" component={SignUpPage} />
+              <Route exact path="/reset-password" component={FPPage} />
+            </Switch>
+          </Layout>
         </ContextProvider>
       </Layout>
     </Router>
