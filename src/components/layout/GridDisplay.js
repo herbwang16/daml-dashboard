@@ -313,8 +313,8 @@ class GridDisplay extends React.PureComponent {
     const { context, dispatch } = this.context;
 
     return (
-      <div style = {{width: '100%'}}>
-        <center style = {{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around'}}>
+      <div style = {{width: '100%', marginLeft: '2rem'}}>
+        <center style = {{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
           <div className="page-title">
             <center>{context.title}</center>
           </div>
@@ -335,8 +335,7 @@ class GridDisplay extends React.PureComponent {
             onBreakpointChange={this.onBreakpointChange}
             onLayoutChange={this.onLayoutChange}
             style={{
-              backgroundColor: context.gridBackGroundColor,
-              margin: "1rem"
+              backgroundColor: context.gridBackGroundColor
             }}
         >
             {_.map(this.state.items, el => this.createElement(el))}
