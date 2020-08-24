@@ -326,7 +326,7 @@ class GridDisplay extends React.PureComponent {
               }}
             />
             <ThemingModal />
-            <Button style = {{position: 'absolute', 
+            <Button style = {{
             margin: '0.5rem', 
             fontFamily: "Roboto, sans-serif", 
             background: "#8bcece",

@@ -504,6 +504,7 @@ body {
 .header {
     width: 100%;
     height: 12vh;
+    position: fixed;
     z-index: 6;
     background: #798DE4;
     display: flex;

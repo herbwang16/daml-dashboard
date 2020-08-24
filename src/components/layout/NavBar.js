@@ -35,34 +35,36 @@ class NavBar extends React.Component{
    render() {
     const { context, dispatch } = this.context;
      return (
-      <Header className="header">
-        <div className = 'home-button' onClick = {this.goHome}>
-          <img
-                  src={logo}
-                  alt="Logo"
-                  style={{height: '7.5vh', width: '7.5vh'}}
-          />
-          <div className="title">
-            Peagle
-          </div>
-        </div>
-        <div>
-          <div style = {{position: 'relative', display: 'flex'}}>
-            <div className="user" onClick = {this.showProf}>
-                Welcome, DAML <UserOutlined/> 
+       <div style = {{position: 'relative', height: '12vh', width: '100%'}}>
+        <Header className="header">
+          <div className = 'home-button' onClick = {this.goHome}>
+            <img
+                    src={logo}
+                    alt="Logo"
+                    style={{height: '7.5vh', width: '7.5vh'}}
+            />
+            <div className="title">
+              Peagle
             </div>
           </div>
-          {this.state.showprof &&
-            <div style = {{position: 'relative', width : '100%'}}>
-              <Card title = {context.email} className = 'profpage'>
-                <Button onClick={this.handleClick} style = {{borderRadius: '3px'}}>
-                  Sign Out <LogoutOutlined/>
-                </Button>
-              </Card>
+          <div>
+            <div style = {{position: 'relative', display: 'flex'}}>
+              <div className="user" onClick = {this.showProf}>
+                  Welcome, DAML <UserOutlined/> 
+              </div>
             </div>
-          }
-        </div>
-      </Header>
+            {this.state.showprof &&
+              <div style = {{position: 'relative', width : '100%'}}>
+                <Card title = {context.email} className = 'profpage'>
+                  <Button onClick={this.handleClick} style = {{borderRadius: '3px'}}>
+                    Sign Out <LogoutOutlined/>
+                  </Button>
+                </Card>
+              </div>
+            }
+          </div>
+        </Header>
+      </div>
    );
    }
    
