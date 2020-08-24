@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Button } from "antd";
+import {AppstoreAddOutlined} from "@ant-design/icons";
 
 import WidgetModalGrid from "./WidgetModalGrid";
 import WidgetDataEntry from "./WidgetDataEntry";
@@ -94,7 +95,7 @@ class WidgetModal extends React.Component {
           type="primary"
           onClick={this.showModal}
         >
-          Add Widget
+          <AppstoreAddOutlined /> Add
         </Button>
         <Modal
           title={stepTitles[this.state.step]}
