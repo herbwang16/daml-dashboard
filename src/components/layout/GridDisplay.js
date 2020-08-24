@@ -3,6 +3,7 @@ import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
 
 import { Dropdown, Button } from "antd";
+import {SaveFilled} from "@ant-design/icons";
 
 import Toolbox from "./Toolbox";
 import { Context } from "../context/Context";
@@ -325,8 +326,12 @@ class GridDisplay extends React.PureComponent {
               }}
             />
             <ThemingModal />
-            <Button style = {{margin: '0.5rem', fontFamily: "Roboto, sans-serif"}} type = 'primary' onClick = {this.save}>
-              Save
+            <Button style = {{position: 'absolute', 
+            margin: '0.5rem', 
+            fontFamily: "Roboto, sans-serif", 
+            background: "#8bcece",
+            border: "#59b59d"}} type = 'primary' onClick = {this.save}>
+              <SaveFilled/>
             </Button>
           </div>
         </center>
