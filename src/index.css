@@ -1,4 +1,4 @@
-@import '~antd/dist/antd.css';
+/* @import '~antd/dist/antd.css';
 
 body {
   margin: 0;
@@ -26,8 +26,6 @@ code {
   font-weight: normal;
   font-size: 36px;
   line-height: 42px;
-  
-
   color: #ffffff;
 }
 
@@ -58,36 +56,6 @@ code {
 
 .ant-menu.ant-menu-light .ant-menu-submenu-open.option{
   background:#637585;
-}
-
-
-.menu-layout-background{
-  width: 317px;
-  height: 937px;
-  left: 0px;
-  top: 87px;
-  
-  background: #4C5B69;
-}
-
-
-
-
-.menu-item{
-  width: 317px;
-  left: 0px;
-  height: 65px;
-  background: #4C5B69;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 300;
-  font-size: 24px;
-  line-height: 28px;
-  align-items: center;
-  border: 0.5px solid #C1C1C1;
-  color: white;
-  margin-top: 0px;
-  margin-bottom:0px;
 }
 
 .link-item{
@@ -133,8 +101,8 @@ code {
   font-size: 24px;
   line-height: 28px;
   align-items: center;
-  
 }
+
 .ant-menu-submenu-title .ant-menu-submenu-arrow{
     background: white;
 }
@@ -196,4 +164,4 @@ code {
   line-height: 28px;
   align-items: center;
 }
-
+ */

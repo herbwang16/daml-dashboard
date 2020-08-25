@@ -46,7 +46,7 @@ class Homepage extends React.Component {
     switch(!context.key) {
       case(false):
         return (
-          <Content className = 'content'>
+          <Content className = 'content' style = {{marginTop: '5vh'}}>
             <div style = {{display: 'flex', justifyContent: 'center', width: '90%'}}>
               <GridDisplay/>
             </div>
@@ -54,7 +54,7 @@ class Homepage extends React.Component {
         );
       default:
         return (
-          <Content className = 'content'>
+          <Content className = 'content' style = {{marginTop: '10vh'}}>
             <div style = {{lineHeight: 1.2,  fontSize: '2rem', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
               Welcome, create or choose a dashboard
             </div>

@@ -19,6 +19,7 @@ import {
 import LoginPage from "./components/auth/LoginPage";
 import FPPage from "./components/auth/FPPage";
 import SignUpPage from "./components/auth/SignUpPage";
+import AccountSettings from "./components/layout/AccountSettings";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { Layout } from 'antd';
 
@@ -28,15 +29,16 @@ function App() {
       <Layout>
         <ContextProvider>
           <Route
-            path='/(|home|)'
+            path={['/home', '/settings']}
             component={() => <NavBar title="Peagle" user="DAML" />}
           />
           <Layout>
-            <Route path='/(|home|)' component={SideBar} />
+            <Route path={['/home', '/settings']} component={SideBar} />
             <Switch>
               <Redirect exact path = '/' to = '/home'/>
               <ProtectedRoute exact path="/home" component={Homepage} />
               <ProtectedRoute exact path="/home/:id" component={Homepage} />
+              <ProtectedRoute exact path="/settings" component={AccountSettings} />
               <Route exact path="/login" component={LoginPage} />
               <Route exact path="/signup" component={SignUpPage} />
               <Route exact path="/reset-password" component={FPPage} />

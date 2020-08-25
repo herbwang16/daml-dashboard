@@ -33,9 +33,10 @@ class NavBar extends React.Component {
   render() {
     const { context, dispatch } = this.context;
     return (
-      <Sider width = 'inherit'
+      <Sider
         collapsible
         collapsedWidth = {0}
+        width = 'auto'
         collapsed = {this.state.collapsed}
         onCollapse = {() => this.setState({collapsed: !this.state.collapsed})}
         className="site-layout-background"
@@ -43,8 +44,8 @@ class NavBar extends React.Component {
       <div className="logo"><div className="daml"><span><UserOutlined /> DAML</span></div></div>
         <Menu
           mode="inline"
-          style={{ height: '100%' }}
-          className="menu-layout-background"
+          style={{ height: '100%', background: '#4C5B69' }}
+          // className="menu-layout-background"
           selectedKeys = {[context.key]}
           defaultOpenKeys = {context.submenu}
         >
@@ -92,16 +93,6 @@ class NavBar extends React.Component {
               <Menu.Item key="12" className="submenu-data"><Option opt={<span><SwitcherOutlined/>BeeMovieScript.txt</span>}/></Menu.Item>
               <Menu.Item key="13" className="submenu-data"><Option opt={<span><SwitcherOutlined/>image.png</span>}/></Menu.Item>
             </SubMenu>
-          </SubMenu>
-          <SubMenu key="sub3" className="main-menu" title={
-            <span style = {{display: 'flex', alignItems: 'center'}}>
-              <SettingFilled/>
-              <span>Account Settings</span>
-            </span>
-          }>
-            <Menu.Item key="14" className="submenu-data">Payment</Menu.Item>
-            <Menu.Item key="15" className="submenu-data">Profile</Menu.Item>
-            <Menu.Item key="16" className="submenu-data">History</Menu.Item>
           </SubMenu>
         </Menu>
       </Sider>

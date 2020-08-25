@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 import {Layout, Button, Card} from "antd";
-import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import {Logout as logout} from "../../api/api";
 import { Context } from "../context/Context";
@@ -31,6 +31,13 @@ class NavBar extends React.Component{
   goHome = () => {
     this.props.history.push('/home');
   }
+
+  toSettings = () => {
+    const { context, dispatch } = this.context;
+    this.props.history.push('/settings');
+    dispatch({type: 'CHANGE SIDEBAR', payload: {key: '', title: ''}});
+    this.setState({showprof: false});
+  }
    
    render() {
     const { context, dispatch } = this.context;
@@ -55,10 +62,17 @@ class NavBar extends React.Component{
             </div>
             {this.state.showprof &&
               <div style = {{position: 'relative', width : '100%'}}>
-                <Card title = {context.email} className = 'profpage'>
-                  <Button onClick={this.handleClick} style = {{borderRadius: '3px'}}>
+                <Card title = {<div
+                      onClick = {this.toSettings}
+                      style = {{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+                    >
+                      {context.email}
+                      <SettingOutlined style = {{position: 'absolute', right: '5%', cursor: 'pointer'}}/>
+                    </div>
+                  } className = 'profpage'>
+                  <div onClick={this.handleClick} className = 'signout'>
                     Sign Out <LogoutOutlined/>
-                  </Button>
+                  </div>
                 </Card>
               </div>
             }
