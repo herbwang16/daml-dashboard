@@ -2,7 +2,7 @@ import React from "react";
 import { WidthProvider, Responsive } from "react-grid-layout";
 import _ from "lodash";
 
-import { Dropdown, Button } from "antd";
+import { Dropdown, Button, Input } from "antd";
 import {SaveFilled} from "@ant-design/icons";
 
 import Toolbox from "./Toolbox";
@@ -309,17 +309,23 @@ class GridDisplay extends React.PureComponent {
     }
   }
 
+  changeTitle = (e) => {
+    const { context, dispatch } = this.context;
+    dispatch({type: 'CHANGE SIDEBAR', payload: {title: e.target.value}});
+    // console.log(e.target.value);
+    
+  }
+
   render() {
     console.log(this.state)
     const { context, dispatch } = this.context;
 
     return (
-      <div style = {{width: '100%', marginLeft: '2rem'}}>
+      <div style = {{width: '100%'}}>
         <center style = {{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-          <div className="page-title">
-            <center>{context.title}</center>
-          </div>
-          <div style={{ padding: "1rem" }}>
+          <Input className="page-title" value = {context.title} onChange = {this.changeTitle}>
+          </Input>
+          <div style={{ padding: "1rem 0" }}>
             <WidgetModal
               onAddWidget={(type, dataProps) => {
                 this.handleAddWidget(type, dataProps);
@@ -327,7 +333,7 @@ class GridDisplay extends React.PureComponent {
             />
             <ThemingModal />
             <Button style = {{
-            margin: '0.5rem', 
+            margin: '0.5rem 0 0.5rem 0.5rem', 
             fontFamily: "Roboto, sans-serif", 
             background: "#8bcece",
             border: "#59b59d"}} type = 'primary' onClick = {this.save}>

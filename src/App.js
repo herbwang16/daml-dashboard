@@ -4,6 +4,7 @@ import Homepage from "./components/layout/Homepage";
 import WidgetDataEntry from "./components/widgetSelection/WidgetDataEntry";
 import SideBar from "./components/layout/SideBar";
 import NavBar from "./components/layout/NavBar";
+import Footer from "./components/layout/Footer";
 // Import context
 import { ThemeProvider } from "./components/context/ThemeContext";
 import { ContextProvider } from "./components/context/Context";
@@ -44,6 +45,10 @@ function App() {
               <Route exact path="/reset-password" component={FPPage} />
             </Switch>
           </Layout>
+          <Route
+            path={['/home', '/settings']}
+            component={Footer}
+          />
         </ContextProvider>
       </Layout>
     </Router>

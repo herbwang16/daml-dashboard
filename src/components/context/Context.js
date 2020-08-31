@@ -14,7 +14,8 @@ const initialState =
   selectedWidgetBackgroundColor: "#D9E0EC",
   primary: "#ECBA91",
   secondary: "#798DE4",
-  extendedColors: ["#8fbc8b", "#ffdb8c", "#fac3e0", "#c98cd4"]
+  extendedColors: ["#8fbc8b", "#ffdb8c", "#fac3e0", "#c98cd4"],
+  collapsed: false
 }
 
 const Context = createContext(initialState);

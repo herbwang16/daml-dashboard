@@ -1,7 +1,7 @@
 import React from "react";
 import "../../App.css";
 import {Layout, Button, Card} from "antd";
-import { UserOutlined, LogoutOutlined, SettingOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, SettingOutlined, MenuOutlined } from '@ant-design/icons';
 import { withRouter } from 'react-router-dom';
 import {Logout as logout} from "../../api/api";
 import { Context } from "../context/Context";
@@ -12,7 +12,8 @@ class NavBar extends React.Component{
   static contextType = Context;
 
   state = {
-    showprof: false
+    showprof: false,
+    showside: true
   }
 
   handleClick = async () => {
@@ -38,21 +39,29 @@ class NavBar extends React.Component{
     dispatch({type: 'CHANGE SIDEBAR', payload: {key: '', title: ''}});
     this.setState({showprof: false});
   }
+
+  toggleSidebar = () => {
+    const { context, dispatch } = this.context;
+    dispatch({type: 'CHANGE SIDEBAR', payload: {collapsed: !context.collapsed}});
+  }
    
    render() {
     const { context, dispatch } = this.context;
      return (
        <div style = {{position: 'relative', height: '12vh', width: '100%'}}>
         <Header className="header">
-          <div className = 'home-button' onClick = {this.goHome}>
-            <img
-                    src={logo}
-                    alt="Logo"
-                    style={{height: '7.5vh', width: '7.5vh'}}
-            />
-            <div className="title">
-              Peagle
-            </div>
+          <div style = {{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+            <span className = 'home-button' onClick = {this.goHome}>
+              <img
+                      src={logo}
+                      alt="Logo"
+                      style={{height: '7.5vh', width: '7.5vh', display: 'inline-block'}}
+              />
+              <div className="title">
+                Peagle
+              </div>
+            </span>
+            <MenuOutlined style = {{color: 'white', marginLeft: '20%', cursor: 'pointer'}} onClick = {this.toggleSidebar}/>
           </div>
           <div>
             <div style = {{position: 'relative', display: 'flex'}}>

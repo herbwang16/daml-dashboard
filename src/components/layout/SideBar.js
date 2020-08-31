@@ -36,16 +36,16 @@ class NavBar extends React.Component {
       <Sider
         collapsible
         collapsedWidth = {0}
-        width = 'auto'
-        collapsed = {this.state.collapsed}
-        onCollapse = {() => this.setState({collapsed: !this.state.collapsed})}
+        width = '15vw'
+        collapsed = {context.collapsed}
+        trigger = {null}
         className="site-layout-background"
       >
-      <div className="logo"><div className="daml"><span><UserOutlined /> DAML</span></div></div>
+        <div className="logo"><div className="daml"><span><UserOutlined /> DAML</span></div></div>
         <Menu
           mode="inline"
-          style={{ height: '100%', background: '#4C5B69' }}
-          // className="menu-layout-background"
+          style={{ background: '#4C5B69' }}
+          className="menu-layout-background"
           selectedKeys = {[context.key]}
           defaultOpenKeys = {context.submenu}
         >

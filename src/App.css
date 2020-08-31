@@ -41,26 +41,28 @@
 
 .page-title {
   font-size: 1.5rem;
-  padding: 0.5rem;
+  padding: 0.25rem 0 0.25rem 1.5rem;
   z-index: 1;
   height: fit-content;
   word-break: break-word;
-  width: 300px;
+  width: auto;
 
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   line-height: 1.5rem;
   background:rgba(121, 141, 228, 0.66);
-  border-radius: 15px;
+  border-radius: 5px;
   color:white;
 }
 
 .home-button {
-  position: relative;
+  white-space: nowrap;
   display: flex;
+  flex-direction: row;
   align-items: center;
   cursor: pointer;
+  width: auto;
 }
 
 body {
@@ -346,7 +348,7 @@ body {
 
 .logo{
   width: 100%;
-  height: 90px;
+  height: 15vh;
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -381,6 +383,8 @@ body {
 }
 
 .ant-layout-sider-children {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   margin-top: -0.1px;
@@ -389,7 +393,6 @@ body {
 
 .site-layout-background {
   min-height: 100vh;
-  display: flex;
   background: #4C5B69;
 }
 
@@ -418,10 +421,7 @@ body {
 
 
 .menu-layout-background{
-  width: 100%;
-  z-index: 4;
-  background: #4C5B69;
-  border-right: 0.5px solid rgba(255, 255, 255, 0.5);
+  flex-grow: 10;
 }
 
 
@@ -521,6 +521,11 @@ body {
     justify-content: space-between;
 }
 
+.footer {
+  height: 100%;
+  background: #8BCECE;
+}
+
 .lower-header {
   position: relative;
   width: 80%;
@@ -556,6 +561,7 @@ body {
   font-weight: normal;
   font-size: 1.5rem;
   color: #FFFFFF;
+  display: inline-block;
   margin-left: 10%;
 }
 
