@@ -321,7 +321,7 @@ class GridDisplay extends React.PureComponent {
     const { context, dispatch } = this.context;
 
     return (
-      <div style = {{width: '100%'}}>
+      <div style = {{width: '100%', marginBottom: '5vh'}}>
         <center style = {{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
           <Input className="page-title" value = {context.title} onChange = {this.changeTitle}>
           </Input>
