@@ -128,7 +128,7 @@ console.log("widget dict:", widgetDict);
 
 class GridDisplay extends React.PureComponent {
   state = {
-    items: []
+    items: [],
   }
 
   prevKey = '';
