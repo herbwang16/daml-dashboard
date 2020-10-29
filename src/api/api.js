@@ -52,6 +52,20 @@ export const ReadUser = async (token) => {
 	return data;
 };
 
+export const EditUser = async (token, email) => {
+	const { data } = await client.patch("/users/me",
+	{
+		email: email,
+	},
+	{
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+};
+
 export const CreateDashboard = async(token, title) => {
 	const { data } = await client.post("/dashboards", {name: title}, {
 		headers: {
@@ -94,6 +108,16 @@ export const UpdateChart = async(token, id, chart) => {
 	return data;
 }
 
+export const GetDashboard = async(token, id) => {
+	const { data } = await client.get(`/dashboards/${id}`, {
+		headers: {
+			'Authorization': `Bearer ${token}`
+		}
+	});
+	console.log(data);
+	return data;
+}
+
 export const GetCharts = async(token, id) => {
 	const { data } = await client.get(`/dashboards/${id}/charts`, {
 		headers: {
@@ -104,8 +128,8 @@ export const GetCharts = async(token, id) => {
 	return data;
 }
 
-export const EditDashboard = async(token, id, ids) => {
-	const { data } = await client.patch(`/dashboards/edit/${id}`, {charts: ids}, {
+export const EditDashboard = async(token, id, updates) => {
+	const { data } = await client.patch(`/dashboards/edit/${id}`, updates, {
 		headers: {
 			'Authorization': `Bearer ${token}`
 		}
@@ -135,4 +159,4 @@ export const PostData = async(token, dataObj) => {
 	return data;
 }
 
-export default { Register, Login, Logout, LogoutAll, ReadUser, CreateDashboard, GetDashboards, CreateChart, UpdateChart, GetCharts, DeleteChart, PostData };
+export default { Register, Login, Logout, LogoutAll, ReadUser, EditUser, CreateDashboard, GetDashboards, CreateChart, UpdateChart, GetDashboard, GetCharts, DeleteChart, PostData };

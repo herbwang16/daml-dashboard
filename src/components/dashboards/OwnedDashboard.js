@@ -5,9 +5,10 @@ import _ from "lodash";
 import { Dropdown, Button, Input } from "antd";
 import {SaveFilled} from "@ant-design/icons";
 
-import Toolbox from "./Toolbox";
+import Toolbox from "../layout/Toolbox";
 import { Context } from "../context/Context";
-import ThemingModal from "./ThemingModal";
+import ThemingModal from "../layout/ThemingModal";
+import ShareModal from "../layout/ShareModal";
 // import widgets
 import WidgetModal from "../widgetSelection/WidgetModal";
 import SimpleLineChart from "../widgets/SimpleLineChart";
@@ -126,7 +127,7 @@ widgetOptions.forEach(widget => {
 
 console.log("widget dict:", widgetDict);
 
-class GridDisplay extends React.PureComponent {
+class OwnedDashboard extends React.PureComponent {
   state = {
     items: [],
     title: ""
@@ -216,6 +217,10 @@ class GridDisplay extends React.PureComponent {
     );
   };
 
+  handleWidgetDropdownChange = (e, { value }) => {
+    this.setState({ widgetDropdown: value });
+  };
+
   handleAddWidget = (type, dataProps) => {
     this.setState({
       // Add a new item - must have a unique key!
@@ -290,7 +295,6 @@ class GridDisplay extends React.PureComponent {
 
   changeTitle = (e) => {
     this.setState({title: e.target.value});
-    // console.log(e.target.value);
   }
 
   render() {
@@ -308,6 +312,7 @@ class GridDisplay extends React.PureComponent {
               }}
             />
             <ThemingModal />
+            <ShareModal />
             <Button style = {{
             margin: '0.5rem 0 0.5rem 0.5rem', 
             fontFamily: "Roboto, sans-serif", 
@@ -332,4 +337,4 @@ class GridDisplay extends React.PureComponent {
   }
 }
 
-export default withRouter(GridDisplay);
+export default withRouter(OwnedDashboard);

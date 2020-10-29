@@ -25,7 +25,6 @@ class ProtectedRoute extends React.Component {
             .catch(() => {
                 this.setState({loading: false, auth: false})
             });
-        console.log(this.state)
     }
 
     render() {

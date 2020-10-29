@@ -63,7 +63,7 @@ class NavBar extends React.Component{
             </span>
             <MenuOutlined style = {{color: 'white', marginLeft: '20%', cursor: 'pointer'}} onClick = {this.toggleSidebar}/>
           </div>
-          <div>
+          <div className = 'welcome'>
             <div style = {{position: 'relative', display: 'flex'}}>
               <div className="user" onClick = {this.showProf}>
                   Welcome, DAML <UserOutlined/> 
@@ -72,11 +72,10 @@ class NavBar extends React.Component{
             {this.state.showprof &&
               <div style = {{position: 'relative', width : '100%'}}>
                 <Card title = {<div
-                      onClick = {this.toSettings}
                       style = {{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
                     >
                       {context.email}
-                      <SettingOutlined style = {{position: 'absolute', right: '5%', cursor: 'pointer'}}/>
+                      <SettingOutlined style = {{position: 'absolute', right: '5%', cursor: 'pointer'}} onClick = {this.toSettings}/>
                     </div>
                   } className = 'profpage'>
                   <div onClick={this.handleClick} className = 'signout'>
